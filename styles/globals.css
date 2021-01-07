@@ -2,8 +2,8 @@
 
 :root {
   --primary: red;
-  --text-color: #ffffff;
-  --background: #181818;
+  --root-text-color: #ffffff;
+  --root-background: #181818;
 }
 
 html,
@@ -11,7 +11,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: var(--background);
+  background: var(--root-background);
 }
 
 a {
