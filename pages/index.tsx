@@ -9,17 +9,17 @@ const Home = () => {
     const showcase = document.querySelector('#showcase');
 
     const showcaseOptions = {
-      rootMargin: '-100px 0px 0px 0px',
+      rootMargin: '-10px 0px 0px 0px',
     };
 
     const showcaseObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) {
-          nav.classList.add(styles.scrolled);
-          badge.classList.remove(styles.hide);
+          nav.classList.add(styles.nav__scrolled);
+          badge.classList.add(styles.nav__badge_show);
         } else {
-          nav.classList.remove(styles.scrolled);
-          badge.classList.add(styles.hide);
+          nav.classList.remove(styles.nav__scrolled);
+          badge.classList.remove(styles.nav__badge_show);
         }
       });
     }, showcaseOptions);
@@ -37,17 +37,17 @@ const Home = () => {
       <header>
         <nav id="nav" className={styles.nav}>
           <div>
-            <a id="badge" className={styles.link} href="#">Luis Manuel G.</a>
+            <a id="badge" className={`${styles.nav__badge} ${styles.nav__link}`} href="#">Luis Manuel G.</a>
           </div>
           <div>
-            <ul>
-              <li>
-                <a className={styles.link} href="#languages">
+            <ul className={styles.nav__list}>
+              <li className={styles.nav__list_item}>
+                <a className={styles.nav__link} href="#languages">
                   Lenguajes y tecnologías
                 </a>
               </li>
-              <li>
-                <a className={styles.link} href="#projects">
+              <li className={styles.nav__list_item}>
+                <a className={styles.nav__link} href="#projects">
                   Proyectos personales
                 </a>
               </li>
@@ -60,10 +60,8 @@ const Home = () => {
         <section id="showcase" className={styles.showcase}>
           <video src="./video.mp4" muted loop autoPlay />
 
-          <div className={styles.overlay} />
-
           <div className={styles.text}>
-            <h1>Luis Manuel G.</h1>
+            <h1>Luis Manuel</h1>
             <h2>Desarrollador Web Jr</h2>
           </div>
         </section>
