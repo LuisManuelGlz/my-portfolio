@@ -1,19 +1,117 @@
-.container {
-  min-height: 100vh;
-  padding: 0 0.5rem;
+.nav {
+  --text-color: var(--secondary);
+  --background: transparent;
+
+  width: 100%;
+  position: fixed;
+  padding: 15px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  background: var(--background);
+  justify-content: space-between;
   align-items: center;
+  z-index: 1000;
 }
 
-.main {
-  padding: 5rem 0;
-  flex: 1;
+.nav ul {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  list-style: none;
+}
+
+.nav ul li {
+  margin-left: 20px;
+}
+
+.link {
+  position: relative;
+  color: var(--text-color);
+  font-weight: 200;
+  font-size: 1.2em;
+  padding: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 50px;
+  background: currentColor;
+  width: 40px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 250ms ease-in-out;
+}
+
+.link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.scrolled {
+  --text-color: var(--primary);
+  --background: var(--secondary);
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+}
+
+.showcase {
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px;
+}
+
+.showcase video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--dark);
+  mix-blend-mode: overlay;
+}
+
+.languages {
+  min-height: 100vh;
+}
+
+.projects {
+  min-height: 100vh;
+}
+
+.text {
+  position: relative;
+  z-index: 20;
+}
+
+.text h1 {
+  font-size: 5em;
+  font-weight: 300;
+  color: var(--secondary);
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+.text h2 {
+  font-size: 3em;
+  color: var(--secondary);
+  font-weight: 200;
+  line-height: 1em;
 }
 
 .footer {
@@ -118,5 +216,14 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+  .showcase {
+    padding: 50px;
+  }
+  .text h1 {
+    font-size: 4em;
+  }
+  .text h2 {
+    font-size: 2em;
   }
 }
