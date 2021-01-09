@@ -12,7 +12,8 @@
     "aos": "^3.0.0-beta.6",
     "next": "10.0.4",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-social-icons": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.16",

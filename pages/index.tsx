@@ -10,51 +10,51 @@ type Props = {
   allProjects: IProject[];
 };
 
-const Home = ({ allProjects }: Props) => {
-  // const allProjects: IProject[] = [
-  //   {
-  //     _id: '68c6-452e-9771',
-  //     description: 'Aplicación para comentar y calificar películas',
-  //     image: { asset: { url: 'https://i.ibb.co/3NHjDcW/paint-2.png' } },
-  //     members: [
-  //       {
-  //         _id: 'e586-490f-b57f',
-  //         github: 'https://github.com/LuisManuelGlz',
-  //         name: 'Luis Manuel',
-  //       },
-  //       {
-  //         _id: 'dc65-4a57-a50b',
-  //         github: 'https://github.com/LuisManuelGlz',
-  //         name: 'Luis Manuel',
-  //       },
-  //       {
-  //         _id: '96f2-48bf-95de',
-  //         github: 'https://github.com/LuisManuelGlz',
-  //         name: 'Luis Manuel',
-  //       },
-  //     ],
-  //     repo: 'https://github.com/LuisManuelGlz/MovieDuck',
-  //     tags: ['Django', 'Python', 'HTML', 'MongoDB', 'Bootstrap'],
-  //     title: 'MovieDuck',
-  //     website: 'https://movieduck.herokuapp.com',
-  //   },
-  //   {
-  //     _id: '5478-4fc6-87d9',
-  //     description: 'App de notas',
-  //     image: { asset: { url: 'https://i.ibb.co/5LkJFRP/paint-4.png' } },
-  //     members: [
-  //       {
-  //         _id: '96f2-48bf-95de',
-  //         github: 'https://github.com/LuisManuelGlz',
-  //         name: 'Luis Manuel',
-  //       },
-  //     ],
-  //     repo: 'https://github.com/LuisManuelGlz/noteate-client',
-  //     tags: ['TypeScript', 'Angular', 'Bootstrap'],
-  //     title: 'Aplicación de notas',
-  //     website: 'https://noteate.vercel.app',
-  //   },
-  // ];
+const Home = (/*{ allProjects }: Props*/) => {
+  const allProjects: IProject[] = [
+    {
+      _id: '68c6-452e-9771',
+      description: 'Aplicación para comentar y calificar películas',
+      image: { asset: { url: 'https://i.ibb.co/3NHjDcW/paint-2.png' } },
+      members: [
+        {
+          _id: 'e586-490f-b57f',
+          github: 'https://github.com/LuisManuelGlz',
+          name: 'Luis Manuel',
+        },
+        {
+          _id: 'dc65-4a57-a50b',
+          github: 'https://github.com/LuisManuelGlz',
+          name: 'Luis Manuel',
+        },
+        {
+          _id: '96f2-48bf-95de',
+          github: 'https://github.com/LuisManuelGlz',
+          name: 'Luis Manuel',
+        },
+      ],
+      repo: 'https://github.com/LuisManuelGlz/MovieDuck',
+      tags: ['Django', 'Python', 'HTML', 'MongoDB', 'Bootstrap'],
+      title: 'MovieDuck',
+      website: 'https://movieduck.herokuapp.com',
+    },
+    {
+      _id: '5478-4fc6-87d9',
+      description: 'App de notas',
+      image: { asset: { url: 'https://i.ibb.co/5LkJFRP/paint-4.png' } },
+      members: [
+        {
+          _id: '96f2-48bf-95de',
+          github: 'https://github.com/LuisManuelGlz',
+          name: 'Luis Manuel',
+        },
+      ],
+      repo: 'https://github.com/LuisManuelGlz/noteate-client',
+      tags: ['TypeScript', 'Angular', 'Bootstrap'],
+      title: 'Aplicación de notas',
+      website: 'https://noteate.vercel.app',
+    },
+  ];
 
   return (
     <div>
@@ -75,7 +75,12 @@ const Home = ({ allProjects }: Props) => {
         </section>
 
         <section id="about" className={styles.about}>
-          About
+          <h3 className={styles.section__title_dark}>About</h3>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque,
+            placeat quibusdam! Mollitia sapiente quod sit, dolore velit error
+            reprehenderit corporis?
+          </p>
         </section>
 
         <section id="projects" className={styles.projects}>
@@ -103,10 +108,10 @@ const Home = ({ allProjects }: Props) => {
 
 export default Home;
 
-export const getStaticProps = async () => {
-  const allProjects = await getAllProjects();
+// export const getStaticProps = async () => {
+//   const allProjects = await getAllProjects();
 
-  return {
-    props: { allProjects },
-  };
-};
+//   return {
+//     props: { allProjects },
+//   };
+// };

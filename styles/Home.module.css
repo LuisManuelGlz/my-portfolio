@@ -42,9 +42,16 @@
   font-weight: 200;
 }
 
+.section__title_dark {
+  font-size: 2em;
+  color: var(--root-text-color-dark);
+  font-weight: 200;
+}
+
 .about {
   min-height: 120vh;
   padding: 100px;
+  color: var(--root-text-color-dark);
 }
 
 .projects {
