@@ -2,8 +2,10 @@
 
 :root {
   /* --primary: red; */
-  --root-text-color: #FFFFFF;
-  --root-background: #181818;
+  --root-text-color-dark: #FFFFFF;
+  --root-text-color-light: #181818;
+  --root-background-dark: #181818;
+  --root-background-light: #FFFFFF;
 }
 
 html,
@@ -11,7 +13,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: var(--root-background);
+  background: var(--root-background-dark);
   scroll-behavior: smooth;
 }
 

@@ -1,62 +1,69 @@
 import Head from 'next/head';
-import { useEffect } from 'react';
 import styles from '../styles/Home.module.css';
+import Layout from '../components/layout';
+import Header from '../components/header';
+import Project from '../components/project';
 
 const Home = () => {
-  useEffect(() => {
-    const nav = document.querySelector('#nav');
-    const badge = document.querySelector('#badge');
-    const showcase = document.querySelector('#showcase');
-
-    const showcaseOptions = {
-      rootMargin: '-10px 0px 0px 0px',
-    };
-
-    const showcaseObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          nav.classList.add(styles.nav__scrolled);
-          badge.classList.add(styles.nav__badge_show);
-        } else {
-          nav.classList.remove(styles.nav__scrolled);
-          badge.classList.remove(styles.nav__badge_show);
-        }
-      });
-    }, showcaseOptions);
-
-    showcaseObserver.observe(showcase);
-  }, []);
+  const projects = [
+    {
+      _id: '1',
+      title: 'Acrylic Painting One',
+      description:
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus minima quam maiores dicta blanditiis et repellat quo totam fugit impedit.',
+      members: [
+        {
+          name: 'Luis Manuel',
+          github:
+            'https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
+        },
+        {
+          name: 'Luis Manuel',
+          github:
+            'https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
+        },
+      ],
+      tags: ['HTML', 'CSS'],
+      image: { asset: { url: 'https://i.ibb.co/VvC0vpN/paint-1.png' } },
+      website:
+        'https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
+      repo:
+        'https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
+    },
+    {
+      title: 'Acrylic Painting One',
+      description:
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus minima quam maiores dicta blanditiis et repellat quo totam fugit impedit.',
+      members: [
+        {
+          name: 'Luis Manuel',
+          github:
+            'https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
+        },
+        {
+          name: 'Luis Manuel',
+          github:
+            'https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
+        },
+      ],
+      tags: ['HTML', 'CSS'],
+      image: { asset: { url: 'https://i.ibb.co/VvC0vpN/paint-1.png' } },
+      website:
+        'https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
+      repo:
+        'https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
+    },
+  ];
 
   return (
     <div>
       <Head>
         <title>Luis Manuel G.</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
-        <nav id="nav" className={styles.nav}>
-          <div>
-            <a id="badge" className={`${styles.nav__badge} ${styles.nav__link}`} href="#">Luis Manuel G.</a>
-          </div>
-          <div>
-            <ul className={styles.nav__list}>
-              <li className={styles.nav__list_item}>
-                <a className={styles.nav__link} href="#languages">
-                  Lenguajes y tecnologías
-                </a>
-              </li>
-              <li className={styles.nav__list_item}>
-                <a className={styles.nav__link} href="#projects">
-                  Proyectos personales
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
+      <Header />
 
-      <main>
+      <Layout>
         <section id="showcase" className={styles.showcase}>
           <video src="./video.mp4" muted loop autoPlay />
 
@@ -66,81 +73,29 @@ const Home = () => {
           </div>
         </section>
 
-        <section>
-          <div id="languages" className={styles.languages}>
-            Languages and tools
-          </div>
+        <section id="about" className={styles.about}>
+          About
         </section>
 
-        <section>
-          <div id="projects" className={styles.projects}>
-            Projects
+        <section id="projects" className={styles.projects}>
+          <h3 className={styles.section__title}>Proyectos personales</h3>
+          <div className={styles.projects__container}>
+            {projects.map((project, index) => (
+              <Project
+                key={project._id}
+                fade={index / 2 === 0 ? 'fade-left' : 'fade-right'}
+                title={project.title}
+                description={project.description}
+                members={project.members}
+                tags={project.tags}
+                image={project.image.asset.url}
+                website={project.website}
+                repo={project.repo}
+              />
+            ))}
           </div>
         </section>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-
-      {/* <main>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main> */}
-
-      {/* <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer> */}
+      </Layout>
     </div>
   );
 };
