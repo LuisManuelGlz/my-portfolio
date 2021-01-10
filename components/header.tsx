@@ -22,11 +22,11 @@ const Header = () => {
     const showcaseObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) {
-          nav.classList.add('nav__scrolled');
-          badge.classList.add('nav__badge_show');
+          nav.classList.add('nav-scrolled');
+          badge.classList.add('badge-show');
         } else {
-          nav.classList.remove('nav__scrolled');
-          badge.classList.remove('nav__badge_show');
+          nav.classList.remove('nav-scrolled');
+          badge.classList.remove('badge-show');
         }
       });
     }, showcaseOptions);
@@ -36,79 +36,53 @@ const Header = () => {
 
   return (
     <header>
-      <nav id="nav" className="nav">
+      <nav
+        id="nav"
+        className="fixed z-50 flex justify-between items-center w-full p-6 bg-transparent transition-colors duration-500 ease-in-out"
+      >
         <div>
-          <a id="badge" className="nav__badge nav__link" href="#">
+          <a
+            id="badge"
+            className="nav-link relative font-extralight text-xl text-light p-3 transition-all duration-500 ease-in-out opacity-0 invisible"
+            href="#"
+          >
             Luis Manuel G.
           </a>
         </div>
         <div>
-          <ul className="nav__list">
-            <li className="nav__list_item">
-              <a className="nav__link" href="#about">
+          <ul className="flex list-none">
+            <li className="mr-5">
+              <a
+                className="nav-link relative font-extralight text-xl text-light p-3"
+                href="#about"
+              >
                 Acerca de
               </a>
             </li>
-            <li className="nav__list_item">
-              <a className="nav__link" href="#projects">
+            <li>
+              <a
+                className="nav-link relative font-extralight text-xl text-light p-3"
+                href="#projects"
+              >
                 Proyectos personales
               </a>
             </li>
           </ul>
         </div>
       </nav>
-
       <style jsx>
         {`
-          .nav {
-            --background: transparent;
-
-            width: 100%;
-            position: fixed;
-            padding: 15px;
-            display: flex;
-            background: var(--background);
-            transition: background 500ms ease-in-out;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-          }
-
-          .nav__scrolled {
-            --background: var(--root-background-dark);
-
+          .nav-scrolled {
+            background: #181818;
             box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
           }
 
-          .nav__badge {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 500ms, visibility 500ms ease-in-out;
-          }
-
-          .nav__badge_show {
+          .badge-show {
             visibility: visible;
             opacity: 1;
           }
 
-          .nav__list {
-            display: flex;
-            list-style: none;
-          }
-
-          .nav__list_item {
-            margin-left: 20px;
-          }
-
-          .nav__link {
-            position: relative;
-            color: var(--root-text-color-dark);
-            font-weight: 200;
-            font-size: 1.2em;
-            padding: 10px;
-          }
-
-          .nav__link::after {
+          .nav-link::after {
             content: '';
             position: absolute;
             left: 0;
@@ -122,7 +96,7 @@ const Header = () => {
             transition: transform 250ms ease-in-out;
           }
 
-          .nav__link:hover::after {
+          .nav-link:hover::after {
             transform: scaleX(1);
             transform-origin: left;
           }

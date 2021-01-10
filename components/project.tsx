@@ -23,13 +23,18 @@ const Project = ({
 }: Props) => {
   return (
     <>
-      <div className={`project ${fade === 'fade-right' && 'project__direction_reverse'}`} data-aos={fade}>
-        <img className="project__image" src={image} alt={title} />
-        <div className="project__content">
-          <h4 className="project__title">{title}</h4>
-          <div className="project__body">
+      <div
+        className={`flex w-11/12 h-80 mb-8 text-dark ${
+          fade === 'fade-right' && 'flex-row-reverse'
+        }`}
+        data-aos={fade}
+      >
+        <img className="w-3/6 rounded-lg" src={image} alt={title} />
+        <div className="w-3/6 px-12">
+          <h4 className="text-2xl font-light">{title}</h4>
+          <div className="font-extralight">
             <p>{description}</p>
-            <div className="project__members">
+            <div className="mt-1">
               Creado por:{' '}
               {members.map((member, index) => (
                 <Fragment key={member._id}>
@@ -44,17 +49,20 @@ const Project = ({
                 </Fragment>
               ))}
             </div>
-            <div className="project__tags">
+            <div className="flex text-sm mt-4">
               {tags.map((tag, index) => (
-                <div key={index} className="project__tags_tag">
+                <div
+                  key={index}
+                  className="rounded-full py-1 px-2 mr-2 bg-gray"
+                >
                   {tag}
                 </div>
               ))}
             </div>
           </div>
-          <div className="project__footer">
+          <div className="flex justify-end mt-12 font-light">
             <a
-              className="project__button"
+              className="button relative py-2 px-4 mr-4"
               href={website}
               target="_blank"
               rel="noopener noreferrer"
@@ -63,7 +71,7 @@ const Project = ({
             </a>
 
             <a
-              className="project__button"
+              className="button relative py-2 px-4"
               href={repo}
               target="_blank"
               rel="noopener noreferrer"
@@ -73,87 +81,26 @@ const Project = ({
           </div>
         </div>
       </div>
-      <style>
+      <style jsx>
         {`
-        .project {
-          width: 100%;
-          display: flex;
-          margin-bottom: 2em;
-          height: 400px;
-        }
+          .button::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            border-radius: 50px;
+            background: currentColor;
+            width: 40px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 250ms ease-in-out;
+          }
 
-        .project__direction_reverse {
-          flex-direction: row-reverse;
-        }
-
-        .project__image {
-          width: 60%;
-          border-radius: 10px
-        }
-
-        .project__content {
-          width: 40%;
-          padding: 2em;
-        }
-        
-        .project__title {
-          font-size: 1.5em;
-          color: var(--root-text-color-light);
-          font-weight: 300;
-        }
-        
-        .project__body {
-          font-weight: 200;
-        }
-
-        .project__tags {
-          display: flex;
-          padding: 30px 10px;
-          font-size: 0.8rem;
-          color: var(--root-text-color-dark);
-        }
-        
-        .project__tags_tag {
-          background: var(--root-background-dark);
-          font-weight: 400;
-          padding: 5px 10px;
-          border-radius: 50px;
-          margin-right: 10px;
-          opacity: 0.8;
-        }
-        
-        .project__footer {
-          margin-top: 50px;
-          display: flex;
-          justify-content: flex-end;
-        }
-        
-        .project__button {
-          font-weight: 300;
-          margin-left: 20px;
-          padding: 10px 15px;
-          color: var(--root-text-color-light);
-          position: relative;
-        }
-
-        .project__button::after {
-          content: '';
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          height: 3px;
-          border-radius: 50px;
-          background: currentColor;
-          width: 40px;
-          transform: scaleX(0);
-          transform-origin: right;
-          transition: transform 250ms ease-in-out;
-        }
-
-        .project__button:hover::after {
-          transform: scaleX(1);
-          transform-origin: left;
-        }
+          .button:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+          }
         `}
       </style>
     </>

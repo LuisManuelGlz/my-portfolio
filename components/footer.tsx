@@ -3,7 +3,7 @@ import { SocialIcon } from 'react-social-icons';
 
 const footer = () => {
   return (
-    <footer className="footer">
+    <footer className="flex justify-center items-center bg-dark w-full h-24">
       <SocialIcon
         style={{ height: 40, width: 40, marginRight: 10 }}
         url="https://github.com/LuisManuelGlz"
@@ -28,16 +28,6 @@ const footer = () => {
         network="twitter"
         bgColor="#FFFFFF"
       />
-
-      <style jsx>{`
-        .footer {
-          width: 100%;
-          height: 100px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      `}</style>
     </footer>
   );
 };

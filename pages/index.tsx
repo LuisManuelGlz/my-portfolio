@@ -65,27 +65,35 @@ const Home = (/*{ allProjects }: Props*/) => {
       <Header />
 
       <Layout>
-        <section id="showcase" className={styles.showcase}>
-          <video src="./video.mp4" muted loop autoPlay />
+        <section
+          id="showcase"
+          className="flex items-center w-full h-screen p-24"
+        >
+          <video
+            className="absolute inset-0 object-cover w-full h-full"
+            src="./video.mp4"
+            muted
+            loop
+            autoPlay
+          />
 
-          <div className={styles.text}>
-            <h1>Luis Manuel</h1>
-            <h2>Desarrollador Web Jr</h2>
+          <div className="relative z-10 text-light font-extralight">
+            <h1 className="text-7xl uppercase">Luis Manuel</h1>
+            <h2 className="text-4xl mt-8">Desarrollador Web Jr</h2>
           </div>
         </section>
-
-        <section id="about" className={styles.about}>
-          <h3 className={styles.section__title_dark}>About</h3>
-          <p>
+        <section id="about" className="h-screen bg-dark text-light p-24">
+          <h3 className="text-3xl font-extralight">Acerca de</h3>
+          <p className="mt-4">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque,
             placeat quibusdam! Mollitia sapiente quod sit, dolore velit error
             reprehenderit corporis?
           </p>
         </section>
 
-        <section id="projects" className={styles.projects}>
-          <h3 className={styles.section__title}>Proyectos personales</h3>
-          <div className={styles.projects__container}>
+        <section id="projects" className="text-dark p-24">
+          <h3 className="text-3xl font-extralight">Proyectos personales</h3>
+          <div className="flex flex-col items-center mt-8">
             {allProjects.map((project, index) => (
               <Project
                 key={project._id}
