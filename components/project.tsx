@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 
 type Props = {
-  effect: 'zoom-in-up' | 'zoom-out-up';
+  effect: 'zoom-in-up' | 'zoom-in-down';
   title: string;
   description: string;
   image: string;
@@ -25,11 +25,15 @@ const Project = ({
     <>
       <div
         className={`flex flex-col lg:flex-row items-center lg:w-11/12 mb-8 text-dark ${
-          effect === 'zoom-out-up' && 'lg:flex-row-reverse'
+          effect === 'zoom-in-down' && 'lg:flex-row-reverse'
         }`}
         data-aos={effect}
       >
-        <img className="w-80 md:w-96 lg:w-3/6 h-52 md:h-64 lg:h-80 rounded-lg" src={image} alt={title} />
+        <img
+          className="w-80 md:w-96 lg:w-3/6 h-52 md:h-64 lg:h-80 rounded-lg"
+          src={image}
+          alt={title}
+        />
         <div className="w-3/4 lg:w-3/6 lg:px-12">
           <h4 className="text-2xl font-light">{title}</h4>
           <div className="font-extralight">

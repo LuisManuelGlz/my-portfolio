@@ -85,10 +85,8 @@ const Home = ({ allProjects }: Props) => {
             </h2>
           </div>
         </section>
-        <section
-          id="about"
-          className="h-screen bg-dark text-light p-6 sm:p-12 md:p-24"
-        >
+
+        <section id="about" className="h-screen text-light p-6 sm:p-12 md:p-24">
           <h3 className="text-3xl font-extralight">Acerca de</h3>
           <p className="mt-4">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque,
@@ -97,13 +95,16 @@ const Home = ({ allProjects }: Props) => {
           </p>
         </section>
 
-        <section id="projects" className="text-dark p-6 sm:p-12 md:p-24">
+        <section
+          id="projects"
+          className="bg-light text-dark p-6 sm:p-12 md:p-24"
+        >
           <h3 className="text-3xl font-extralight">Proyectos personales</h3>
           <div className="flex flex-col items-center mt-8">
             {allProjects.map((project, index) => (
               <Project
                 key={project._id}
-                effect={index / 2 === 0 ? 'zoom-in-up' : 'zoom-out-up'}
+                effect={index / 2 === 0 ? 'zoom-in-up' : 'zoom-in-down'}
                 title={project.title}
                 description={project.description}
                 members={project.members}
