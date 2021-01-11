@@ -24,13 +24,13 @@ const Project = ({
   return (
     <>
       <div
-        className={`flex w-11/12 h-80 mb-8 text-dark ${
-          fade === 'fade-right' && 'flex-row-reverse'
+        className={`flex flex-col lg:flex-row items-center lg:w-11/12 mb-8 text-dark ${
+          fade === 'fade-right' && 'lg:flex-row-reverse'
         }`}
         data-aos={fade}
       >
-        <img className="w-3/6 rounded-lg" src={image} alt={title} />
-        <div className="w-3/6 px-12">
+        <img className="w-80 md:w-96 lg:w-3/6 h-60 md:h-64 lg:h-80 rounded-lg" src={image} alt={title} />
+        <div className="w-3/4 lg:w-3/6 lg:px-12">
           <h4 className="text-2xl font-light">{title}</h4>
           <div className="font-extralight">
             <p>{description}</p>
@@ -49,20 +49,20 @@ const Project = ({
                 </Fragment>
               ))}
             </div>
-            <div className="flex text-sm mt-4">
+            <div className="flex flex-wrap text-sm mt-4">
               {tags.map((tag, index) => (
                 <div
                   key={index}
-                  className="rounded-full py-1 px-2 mr-2 bg-gray"
+                  className="rounded-full py-1 px-2 mb-1 mr-2 bg-gray"
                 >
                   {tag}
                 </div>
               ))}
             </div>
           </div>
-          <div className="flex justify-end mt-12 font-light">
+          <div className="flex justify-end mt-6 lg:mt-12 font-light">
             <a
-              className="button relative py-2 px-4 mr-4"
+              className="button relative py-2 px-3 mr-4"
               href={website}
               target="_blank"
               rel="noopener noreferrer"
@@ -71,7 +71,7 @@ const Project = ({
             </a>
 
             <a
-              className="button relative py-2 px-4"
+              className="button relative py-2 px-3"
               href={repo}
               target="_blank"
               rel="noopener noreferrer"

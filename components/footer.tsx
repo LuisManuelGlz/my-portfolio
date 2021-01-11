@@ -3,7 +3,7 @@ import { SocialIcon } from 'react-social-icons';
 
 const footer = () => {
   return (
-    <footer className="flex justify-center items-center bg-dark w-full h-24">
+    <footer className="flex justify-center items-center bg-dark w-full h-20 md:h-24">
       <SocialIcon
         style={{ height: 40, width: 40, marginRight: 10 }}
         url="https://github.com/LuisManuelGlz"
