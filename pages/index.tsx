@@ -70,18 +70,25 @@ const Home = ({ allProjects }: Props) => {
         >
           <video
             className="absolute inset-0 object-cover w-full h-full"
-            src="./video.mp4"
+            src={'./video.mp4'}
             muted
             loop
             autoPlay
           />
 
           <div className="relative z-10 text-light font-extralight">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl uppercase">Luis Manuel</h1>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl mt-8">Desarrollador Web Jr</h2>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl uppercase">
+              Luis Manuel
+            </h1>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl mt-8">
+              Desarrollador Web Jr
+            </h2>
           </div>
         </section>
-        <section id="about" className="h-screen bg-dark text-light p-6 sm:p-12 md:p-24">
+        <section
+          id="about"
+          className="h-screen bg-dark text-light p-6 sm:p-12 md:p-24"
+        >
           <h3 className="text-3xl font-extralight">Acerca de</h3>
           <p className="mt-4">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque,

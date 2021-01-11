@@ -29,7 +29,7 @@ const Project = ({
         }`}
         data-aos={fade}
       >
-        <img className="w-80 md:w-96 lg:w-3/6 h-60 md:h-64 lg:h-80 rounded-lg" src={image} alt={title} />
+        <img className="w-80 md:w-96 lg:w-3/6 h-52 md:h-64 lg:h-80 rounded-lg" src={image} alt={title} />
         <div className="w-3/4 lg:w-3/6 lg:px-12">
           <h4 className="text-2xl font-light">{title}</h4>
           <div className="font-extralight">
