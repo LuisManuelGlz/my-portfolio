@@ -103,7 +103,7 @@ const Home = ({ allProjects }: Props) => {
             {allProjects.map((project, index) => (
               <Project
                 key={project._id}
-                fade={index / 2 === 0 ? 'fade-left' : 'fade-right'}
+                effect={index / 2 === 0 ? 'zoom-in-up' : 'zoom-out-up'}
                 title={project.title}
                 description={project.description}
                 members={project.members}

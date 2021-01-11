@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 
 type Props = {
-  fade: 'fade-left' | 'fade-right';
+  effect: 'zoom-in-up' | 'zoom-out-up';
   title: string;
   description: string;
   image: string;
@@ -12,7 +12,7 @@ type Props = {
 };
 
 const Project = ({
-  fade,
+  effect,
   title,
   description,
   image,
@@ -25,9 +25,9 @@ const Project = ({
     <>
       <div
         className={`flex flex-col lg:flex-row items-center lg:w-11/12 mb-8 text-dark ${
-          fade === 'fade-right' && 'lg:flex-row-reverse'
+          effect === 'zoom-out-up' && 'lg:flex-row-reverse'
         }`}
-        data-aos={fade}
+        data-aos={effect}
       >
         <img className="w-80 md:w-96 lg:w-3/6 h-52 md:h-64 lg:h-80 rounded-lg" src={image} alt={title} />
         <div className="w-3/4 lg:w-3/6 lg:px-12">
