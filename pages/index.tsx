@@ -1,9 +1,13 @@
+import { useEffect } from 'react';
 import Head from 'next/head';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Layout from '../components/layout';
+import Container from '../components/container';
 import Header from '../components/header';
 import Project from '../components/project';
-import { getAllProjects } from '../lib/api';
 import IProject from '../types/project';
+import { getAllProjects } from '../lib/api';
 
 type Props = {
   allProjects: IProject[];
@@ -55,67 +59,76 @@ const Home = ({ allProjects }: Props) => {
   //   },
   // ];
 
+  useEffect(() => {
+    AOS.init({
+      offset: 300,
+      delay: 0,
+      duration: 1000,
+      once: true,
+    });
+  }, []);
+
   return (
     <div>
-      <Head>
-        <title>Luis Manuel G.</title>
-      </Head>
-
-      <Header />
-
       <Layout>
-        <section
-          id="showcase"
-          className="flex items-center w-full h-screen p-6 sm:p-12 md:p-24"
-        >
-          <video
-            className="absolute inset-0 object-cover w-full h-full"
-            src={'./video.mp4'}
-            muted
-            loop
-            autoPlay
-          />
+        <Head>
+          <title>Luis Manuel</title>
+        </Head>
 
-          <div className="relative z-10 text-light font-extralight">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl uppercase">
-              Luis Manuel
-            </h1>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl mt-8">
-              Desarrollador Web Jr
-            </h2>
-          </div>
-        </section>
+        <Header />
 
-        <section id="about" className="h-screen text-light p-6 sm:p-12 md:p-24">
-          <h3 className="text-3xl font-extralight">Acerca de</h3>
-          <p className="mt-4">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque,
-            placeat quibusdam! Mollitia sapiente quod sit, dolore velit error
-            reprehenderit corporis?
-          </p>
-        </section>
+        <Container>
+          {/* showcase */}
+          <section>
+            <div className="flex flex-col justify-center items-center h-screen">
+              <h1 className="text-primary text-6xl md:text-7xl lg:text-8xl font-bold mb-4">
+                Hola, soy Luis.
+              </h1>
+              <h2 className="text-gray text-xl md:text-2xl lg:text-3xl">
+                Soy un Desarrollador Web Jr
+              </h2>
+            </div>
+          </section>
 
-        <section
-          id="projects"
-          className="bg-light text-dark p-6 sm:p-12 md:p-24"
-        >
-          <h3 className="text-3xl font-extralight">Proyectos personales</h3>
-          <div className="flex flex-col items-center mt-8">
-            {allProjects.map((project, index) => (
-              <Project
-                key={project._id}
-                effect={index / 2 === 0 ? 'zoom-in-up' : 'zoom-in-down'}
-                title={project.title}
-                description={project.description}
-                members={project.members}
-                tags={project.tags}
-                image={project.image.asset.url}
-                website={project.website}
-                repo={project.repo}
-              />
-            ))}
-          </div>
-        </section>
+          {/* projects */}
+          <section id="projects">
+            <div className="py-16 text-light">
+              <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
+                Mis <span className="block text-primary">proyectos</span>
+              </h3>
+              <div className="flex flex-col items-center">
+                {allProjects.map((project, index) => (
+                  <Project
+                    key={project._id}
+                    effect={index / 2 === 0 ? 'zoom-in-up' : 'zoom-in-down'}
+                    title={project.title}
+                    description={project.description}
+                    members={project.members}
+                    tags={project.tags}
+                    image={project.image.asset.url}
+                    website={project.website}
+                    repo={project.repo}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* about */}
+          <section id="about">
+            <div className="text-light py-16">
+              <h3 className="text-5xl md:text-6xl lg:text-7xl text-primary font-bold mb-8">
+                Acerca de
+              </h3>
+              <p className="w-full sm:w-5/6 md:w-4/5 lg:w-3/4 text-light text-2xl">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
+                assumenda maiores autem at numquam quibusdam, accusantium alias
+                iusto fugit obcaecati recusandae et eligendi repellat,
+                praesentium sequi aut. A, alias. Excepturi?
+              </p>
+            </div>
+          </section>
+        </Container>
       </Layout>
     </div>
   );

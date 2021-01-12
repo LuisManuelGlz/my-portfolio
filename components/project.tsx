@@ -22,92 +22,85 @@ const Project = ({
   tags,
 }: Props) => {
   return (
-    <>
-      <div
-        className={`flex flex-col lg:flex-row items-center lg:w-11/12 mb-8 text-dark ${
-          effect === 'zoom-in-down' && 'lg:flex-row-reverse'
-        }`}
-        data-aos={effect}
-      >
-        <img
-          className="w-80 md:w-96 lg:w-3/6 h-52 md:h-64 lg:h-80 rounded-lg"
-          src={image}
-          alt={title}
-        />
-        <div className="w-3/4 lg:w-3/6 lg:px-12">
-          <h4 className="text-2xl font-light">{title}</h4>
-          <div className="font-extralight">
-            <p>{description}</p>
-            <div className="mt-1">
-              Creado por:{' '}
-              {members.map((member, index) => (
-                <Fragment key={member._id}>
-                  <a
-                    href={member.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {member.name}
-                  </a>
-                  {index + 1 !== members.length && ', '}
-                </Fragment>
-              ))}
-            </div>
-            <div className="flex flex-wrap text-sm mt-4">
-              {tags.map((tag, index) => (
-                <div
-                  key={index}
-                  className="rounded-full py-1 px-2 mb-1 mr-2 bg-gray"
+    <div
+      className={`flex flex-col lg:flex-row w-11/12 mb-16 ${
+        effect === 'zoom-in-down' && 'lg:flex-row-reverse'
+      }`}
+      data-aos={effect}
+    >
+      {/* project image */}
+      <div className="sm:w-80 md:w-96 lg:w-1/2 mb-4 lg:mb-0">
+        <a href={website} target="_blank" rel="noopener noreferrer">
+          <img
+            className="w-full md:h-60 lg:h-80 rounded-lg"
+            src={image}
+            alt={title}
+          />
+        </a>
+      </div>
+      {/* project content */}
+      <div className="w-full lg:w-1/2 lg:px-12">
+        {/* project header */}
+        <div>
+          <h4 className="text-primary text-xl font-semibold mb-2">
+            <a href={website} target="_blank" rel="noopener noreferrer">
+              {title}
+            </a>
+          </h4>
+        </div>
+        {/* project body */}
+        <div>
+          <p>{description}</p>
+          <div className="text-gray">
+            Creado por:{' '}
+            {members.map((member, index) => (
+              <Fragment key={member._id}>
+                <a
+                  className="text-primary"
+                  href={member.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  {tag}
-                </div>
-              ))}
-            </div>
+                  {member.name}
+                </a>
+                {index + 1 !== members.length && ', '}
+              </Fragment>
+            ))}
           </div>
-          <div className="flex justify-end mt-6 lg:mt-12 font-light">
-            <a
-              className="button relative py-2 px-3 mr-4"
-              href={website}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ver sitio
-            </a>
-
-            <a
-              className="button relative py-2 px-3"
-              href={repo}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Código fuente
-            </a>
+          <div className="flex flex-wrap mt-4 mb-8">
+            {tags.map((tag, index) => (
+              <div
+                key={index}
+                className="text-sm py-1 px-3 rounded-full bg-secondary mr-2 mb-2"
+              >
+                {tag}
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-      <style jsx>
-        {`
-          .button::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 3px;
-            border-radius: 50px;
-            background: currentColor;
-            width: 40px;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 250ms ease-in-out;
-          }
 
-          .button:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-          }
-        `}
-      </style>
-    </>
+        {/* project footer */}
+        <div className="flex sm:block flex-col">
+          <a
+            className="font-medium text-center py-3 px-4 rounded-full bg-primary mb-4 md:mb-0 sm:mr-4"
+            href={website}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ver sitio
+          </a>
+
+          <a
+            className="font-medium text-center py-3 px-4 rounded-full g-none sm:bg-secondary"
+            href={repo}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Código fuente
+          </a>
+        </div>
+      </div>
+    </div>
   );
 };
 

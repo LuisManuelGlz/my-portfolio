@@ -1,16 +1,15 @@
-import { ReactNode } from 'react';
-import Meta from './meta';
 import Footer from './footer';
+import Meta from './meta';
 
 type Props = {
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 const Layout = ({ children }: Props) => {
   return (
     <>
       <Meta />
-      {children}
+      <main>{children}</main>
       <Footer />
     </>
   );
