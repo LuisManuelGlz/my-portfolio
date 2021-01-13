@@ -1,14 +1,19 @@
 import { SocialIcon } from 'react-social-icons';
 import Container from './container';
+import ISocialLinks from '../types/socialLinks';
 
-const Footer = () => {
+type Props = {
+  socialLinks: ISocialLinks;
+};
+
+const Footer = ({ socialLinks: { github, linkedIn, twitter } }: Props) => {
   return (
     <footer>
       <Container>
         <div className="py-8 flex justify-center">
           <SocialIcon
             style={{ height: 40, width: 40, marginRight: 20 }}
-            url="https://github.com/LuisManuelGlz"
+            url={github}
             target="_blank"
             rel="noopener noreferrer"
             network="github"
@@ -16,7 +21,7 @@ const Footer = () => {
           />
           <SocialIcon
             style={{ height: 40, width: 40, marginRight: 20 }}
-            url="https://linkedin.com/in/luismanuelglz"
+            url={linkedIn}
             target="_blank"
             rel="noopener noreferrer"
             network="linkedin"
@@ -24,7 +29,7 @@ const Footer = () => {
           />
           <SocialIcon
             style={{ height: 40, width: 40, marginRight: 20 }}
-            url="https://twitter.com/LuisManuelGlz_"
+            url={twitter}
             target="_blank"
             rel="noopener noreferrer"
             network="twitter"

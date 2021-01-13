@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import Container from './container';
 
-const Header = () => {
+type Props = {
+  siteName: string;
+};
+
+const Header = ({ siteName }: Props) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
@@ -34,7 +38,7 @@ const Header = () => {
               className="text-light text-3xl sm:text-base"
               onClick={() => setIsNavOpen(false)}
             >
-              Luis Manuel
+              {siteName}
             </a>
           </li>
           <div className="flex-grow hidden sm:block" />

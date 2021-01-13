@@ -6,59 +6,19 @@ import Layout from '../components/layout';
 import Container from '../components/container';
 import Header from '../components/header';
 import Project from '../components/project';
+import ISiteSettings from '../types/siteSettings';
 import IProject from '../types/project';
-import { getAllProjects } from '../lib/api';
+import { getAllProjects, getSiteSettings } from '../lib/api';
 
 type Props = {
+  siteSettings: ISiteSettings;
   allProjects: IProject[];
 };
 
-const Home = ({ allProjects }: Props) => {
-  // const allProjects: IProject[] = [
-  //   {
-  //     _id: '68c6-452e-9771',
-  //     description: 'Aplicación para comentar y calificar películas',
-  //     image: { asset: { url: 'https://i.ibb.co/3NHjDcW/paint-2.png' } },
-  //     members: [
-  //       {
-  //         _id: 'e586-490f-b57f',
-  //         github: 'https://github.com/LuisManuelGlz',
-  //         name: 'Luis Manuel',
-  //       },
-  //       {
-  //         _id: 'dc65-4a57-a50b',
-  //         github: 'https://github.com/LuisManuelGlz',
-  //         name: 'Luis Manuel',
-  //       },
-  //       {
-  //         _id: '96f2-48bf-95de',
-  //         github: 'https://github.com/LuisManuelGlz',
-  //         name: 'Luis Manuel',
-  //       },
-  //     ],
-  //     repo: 'https://github.com/LuisManuelGlz/MovieDuck',
-  //     tags: ['Django', 'Python', 'HTML', 'MongoDB', 'Bootstrap'],
-  //     title: 'MovieDuck',
-  //     website: 'https://movieduck.herokuapp.com',
-  //   },
-  //   {
-  //     _id: '5478-4fc6-87d9',
-  //     description: 'App de notas',
-  //     image: { asset: { url: 'https://i.ibb.co/5LkJFRP/paint-4.png' } },
-  //     members: [
-  //       {
-  //         _id: '96f2-48bf-95de',
-  //         github: 'https://github.com/LuisManuelGlz',
-  //         name: 'Luis Manuel',
-  //       },
-  //     ],
-  //     repo: 'https://github.com/LuisManuelGlz/noteate-client',
-  //     tags: ['TypeScript', 'Angular', 'Bootstrap'],
-  //     title: 'Aplicación de notas',
-  //     website: 'https://noteate.vercel.app',
-  //   },
-  // ];
-
+const Home = ({
+  siteSettings: { siteName, shortName, role, about, ...socialLinks },
+  allProjects,
+}: Props) => {
   useEffect(() => {
     AOS.init({
       offset: 300,
@@ -70,22 +30,22 @@ const Home = ({ allProjects }: Props) => {
 
   return (
     <div>
-      <Layout>
+      <Layout socialLinks={socialLinks}>
         <Head>
-          <title>Luis Manuel</title>
+          <title>{siteName}</title>
         </Head>
 
-        <Header />
+        <Header siteName={siteName} />
 
         <Container>
           {/* showcase */}
           <section>
             <div className="flex flex-col justify-center items-center h-screen">
               <h1 className="text-primary text-6xl md:text-7xl lg:text-8xl font-bold mb-4">
-                Hola, soy Luis.
+                Hola, soy {shortName}.
               </h1>
               <h2 className="text-gray text-xl md:text-2xl lg:text-3xl">
-                Soy un Desarrollador Web Jr
+                {role}
               </h2>
             </div>
           </section>
@@ -121,10 +81,7 @@ const Home = ({ allProjects }: Props) => {
                 Acerca de
               </h3>
               <p className="w-full sm:w-5/6 md:w-4/5 lg:w-3/4 text-light text-2xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-                assumenda maiores autem at numquam quibusdam, accusantium alias
-                iusto fugit obcaecati recusandae et eligendi repellat,
-                praesentium sequi aut. A, alias. Excepturi?
+                {about}
               </p>
             </div>
           </section>
@@ -137,9 +94,10 @@ const Home = ({ allProjects }: Props) => {
 export default Home;
 
 export const getStaticProps = async () => {
+  const siteSettings = await getSiteSettings();
   const allProjects = await getAllProjects();
 
   return {
-    props: { allProjects },
+    props: { siteSettings, allProjects },
   };
 };

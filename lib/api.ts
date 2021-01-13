@@ -24,3 +24,18 @@ export const getAllProjects = async () => {
   );
   return data;
 };
+
+export const getSiteSettings = async () => {
+  const data = await client.fetch(
+    `*[_type == 'siteSettings'][0]{
+      siteName,
+      shortName,
+      role,
+      about,
+      github,
+      linkedIn,
+      twitter,
+    }`
+  );
+  return data;
+};
