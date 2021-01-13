@@ -30,7 +30,9 @@ const Home = ({
 
   return (
     <div>
-      <Layout socialLinks={socialLinks}>
+      <Layout
+        socialLinks={socialLinks}
+      >
         <Head>
           <title>{siteName}</title>
         </Head>
@@ -39,13 +41,13 @@ const Home = ({
 
         <Container>
           {/* showcase */}
-          <section>
+          <section id="showcase">
             <div className="flex flex-col justify-center items-center h-screen">
               <h1 className="text-primary text-6xl md:text-7xl lg:text-8xl font-bold mb-4">
                 Hola, soy {shortName}.
               </h1>
               <h2 className="text-gray text-xl md:text-2xl lg:text-3xl">
-                {role}
+                Soy un {role}
               </h2>
             </div>
           </section>
