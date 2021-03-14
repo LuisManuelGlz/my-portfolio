@@ -62,7 +62,7 @@ const Home = ({
                 {allProjects.map((project, index) => (
                   <Project
                     key={project._id}
-                    effect={index / 2 === 0 ? 'zoom-in-up' : 'zoom-in-down'}
+                    effect={index % 2 === 0 ? 'zoom-in-up' : 'zoom-in-down'}
                     title={project.title}
                     description={project.description}
                     members={project.members}
