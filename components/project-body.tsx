@@ -11,7 +11,7 @@ const ProjectBody = ({ description, members, tags }: Props) => {
     <div>
       <p>{description}</p>
       <div className="text-gray">
-        Creado por:{' '}
+        Created by:{' '}
         {members.map((member, index) => (
           <Fragment key={member._id}>
             <a

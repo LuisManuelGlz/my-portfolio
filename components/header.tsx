@@ -48,7 +48,7 @@ const Header = ({ siteName }: Props) => {
               className="text-light sm:text-gray text-3xl sm:text-base"
               onClick={() => setIsNavOpen(false)}
             >
-              Mis proyectos
+              Projects
             </a>
           </li>
           <li>
@@ -57,7 +57,7 @@ const Header = ({ siteName }: Props) => {
               className="text-light sm:text-gray text-3xl sm:text-base"
               onClick={() => setIsNavOpen(false)}
             >
-              Acerca de
+              About
             </a>
           </li>
         </ul>

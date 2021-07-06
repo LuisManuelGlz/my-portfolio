@@ -44,10 +44,10 @@ const Home = ({
           <section id="showcase">
             <div className="flex flex-col justify-center items-center h-screen">
               <h1 className="text-primary text-6xl md:text-7xl lg:text-8xl font-bold mb-4">
-                Hola, soy {shortName}.
+                Hi, I'm {shortName}.
               </h1>
               <h2 className="text-gray text-xl md:text-2xl lg:text-3xl">
-                Soy un {role}
+                I'm a {role}
               </h2>
             </div>
           </section>
@@ -56,7 +56,7 @@ const Home = ({
           <section id="projects">
             <div className="py-16 text-light">
               <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
-                Mis <span className="block text-primary">proyectos</span>
+                My <span className="block text-primary">projects</span>
               </h3>
               <div className="flex flex-col items-center">
                 {allProjects.map((project, index) => (
@@ -80,7 +80,7 @@ const Home = ({
           <section id="about">
             <div className="text-light py-16">
               <h3 className="text-5xl md:text-6xl lg:text-7xl text-primary font-bold mb-8">
-                Acerca de
+                About
               </h3>
               <p className="w-full sm:w-5/6 md:w-4/5 lg:w-3/4 text-light text-2xl">
                 {about}
