@@ -43,10 +43,10 @@ const Home = ({
           {/* showcase */}
           <section id="showcase">
             <div className="flex flex-col justify-center items-center h-screen">
-              <h1 className="text-primary text-6xl md:text-7xl lg:text-8xl font-bold mb-4">
+              <h1 className="text-primary text-center text-6xl md:text-7xl lg:text-8xl font-bold mb-4">
                 Hi, I'm {shortName}.
               </h1>
-              <h2 className="text-gray text-xl md:text-2xl lg:text-3xl">
+              <h2 className="text-gray text-center text-xl md:text-2xl lg:text-3xl">
                 I'm a {role}
               </h2>
             </div>
