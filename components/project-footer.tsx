@@ -14,7 +14,7 @@ const ProjectFooter = ({ website, repo }: Props) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        See site
+        Go to site
       </a>
 
       <a
@@ -23,7 +23,7 @@ const ProjectFooter = ({ website, repo }: Props) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        See code
+        View code
       </a>
     </div>
   );
