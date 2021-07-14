@@ -26,7 +26,7 @@ const Project = ({
 }: Props) => {
   return (
     <div
-      className={`flex flex-col lg:flex-row w-11/12 mb-16 ${
+      className={`flex flex-col lg:flex-row w-11/12 2xl:w-9/12 mb-16 ${
         effect === 'zoom-in-down' && 'lg:flex-row-reverse'
       }`}
       data-aos={effect}
