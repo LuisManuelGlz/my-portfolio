@@ -1,15 +1,22 @@
 import React, { Fragment } from 'react';
+import BlockContent from '@sanity/block-content-to-react';
 
 type Props = {
-  description: string;
+  description: any;
   members: any[];
   tags: string[];
 };
 
 const ProjectBody = ({ description, members, tags }: Props) => {
+  const link = ({ mark: { href }, children }) => (
+    <a className="text-primary" href={href}>
+      {children}
+    </a>
+  );
+
   return (
     <div>
-      <p>{description}</p>
+      <BlockContent blocks={description.en} serializers={{ marks: { link } }} />
       <div className="text-gray">
         Created by:{' '}
         {members.map((member, index) => (
@@ -39,6 +46,6 @@ const ProjectBody = ({ description, members, tags }: Props) => {
       </div>
     </div>
   );
-}
+};
 
 export default ProjectBody;

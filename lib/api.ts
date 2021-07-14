@@ -2,10 +2,13 @@ import client from './sanity';
 
 export const getAllProjects = async () => {
   const data = await client.fetch(
-    `*[_type == 'project']{
+    `*[_type == 'project' && show == true]{
         _id,
         title,
-        description,
+        description{
+          "en": en[0],
+          "es": es[0]
+        },
         website,
         repo,
         tags,
@@ -31,10 +34,18 @@ export const getSiteSettings = async () => {
       siteName,
       shortName,
       role,
-      about,
+      about{
+        "en": en[0],
+        "es": es[0]
+      },
+      whatIDo{
+        "en": en[0],
+        "es": es[0]
+      },
       github,
       linkedIn,
       twitter,
+      location
     }`
   );
   return data;
