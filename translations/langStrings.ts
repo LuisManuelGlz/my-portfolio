@@ -2,7 +2,7 @@ export const langStrings = {
   en: {
     greeting: "Hello, I'm",
     imA: "I'm a",
-    my: 'Mis',
+    my: 'My',
     projects: 'Projects',
     about: 'About',
     createdBy: 'Created by',
