@@ -3,7 +3,7 @@ export const langStrings = {
     developer: 'Developer',
     greeting: "Hello, I'm",
     imA: "I'm a",
-    my: 'Mis',
+    my: 'My',
     projects: 'Projects',
     about: 'About',
     createdBy: 'Created by',
