@@ -15,7 +15,7 @@ const FlagButton = ({ locale }: Props) => {
 
   return (
     <button onClick={handleClick}>
-      <img src={`flags/${locale}.png`} alt={`${locale} flag`} width="20" />
+      <img src={`flags/${locale}.png`} alt={`${locale} flag`} width="25" />
     </button>
   );
 };
