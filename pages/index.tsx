@@ -30,7 +30,12 @@ const Home = ({
   }, []);
 
   const link = ({ mark: { href }, children }) => (
-    <a className="text-primary" href={href}>
+    <a
+      className="text-primary"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       {children}
     </a>
   );
