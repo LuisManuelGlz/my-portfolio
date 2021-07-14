@@ -1,4 +1,5 @@
 import React from 'react';
+import useTranslation from '../hooks/useTranslation';
 
 type Props = {
   website?: string;
@@ -6,6 +7,8 @@ type Props = {
 };
 
 const ProjectFooter = ({ website, repo }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <div className="flex sm:block flex-col">
       <a
@@ -14,7 +17,7 @@ const ProjectFooter = ({ website, repo }: Props) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Go to site
+        {t('goToSite')}
       </a>
 
       <a
@@ -23,7 +26,7 @@ const ProjectFooter = ({ website, repo }: Props) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        View code
+        {t('seeCode')}
       </a>
     </div>
   );

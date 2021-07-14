@@ -1,4 +1,4 @@
-import { useEffect, createElement } from 'react';
+import { useEffect, useContext } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import Head from 'next/head';
 import AOS from 'aos';
@@ -10,6 +10,8 @@ import Project from '../components/project';
 import ISiteSettings from '../types/siteSettings';
 import IProject from '../types/project';
 import { getAllProjects, getSiteSettings } from '../lib/api';
+import useTranslation from '../hooks/useTranslation';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 type Props = {
   siteSettings: ISiteSettings;
@@ -20,6 +22,9 @@ const Home = ({
   siteSettings: { siteName, shortName, role, about, ...socialLinks },
   allProjects,
 }: Props) => {
+  const { locale } = useContext(LanguageContext);
+  const { t } = useTranslation();
+
   useEffect(() => {
     AOS.init({
       offset: 300,
@@ -65,10 +70,10 @@ const Home = ({
           <section id="showcase">
             <div className="flex flex-col justify-center items-center h-screen">
               <h1 className="text-primary text-center text-6xl md:text-7xl lg:text-8xl font-bold mb-4">
-                Hi, I'm {shortName}.
+                {t('greeting')} {shortName}.
               </h1>
               <h2 className="text-gray text-center text-xl md:text-2xl lg:text-3xl">
-                I'm a {role.en}
+                {t('imA')} {role[locale]}
               </h2>
             </div>
           </section>
@@ -77,7 +82,8 @@ const Home = ({
           <section id="projects">
             <div className="py-16 text-light">
               <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
-                My <span className="block text-primary">projects</span>
+                {t('my')}{' '}
+                <span className="block text-primary">{t('projects')}</span>
               </h3>
               <div className="flex flex-col items-center">
                 {allProjects.map((project, index) => (
@@ -101,9 +107,9 @@ const Home = ({
           <section id="about">
             <div className="text-light py-16">
               <h3 className="text-5xl md:text-6xl lg:text-7xl text-primary font-bold mb-8">
-                About
+                {t('about')}
               </h3>
-              <BlockContent blocks={about.en} serializers={serializers} />
+              <BlockContent blocks={about[locale]} serializers={serializers} />
             </div>
           </section>
         </Container>

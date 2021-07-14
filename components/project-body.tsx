@@ -1,5 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
+import useTranslation from '../hooks/useTranslation';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 type Props = {
   description: any;
@@ -8,6 +10,9 @@ type Props = {
 };
 
 const ProjectBody = ({ description, members, tags }: Props) => {
+  const { locale } = useContext(LanguageContext);
+  const { t } = useTranslation();
+
   const link = ({ mark: { href }, children }) => (
     <a
       className="text-primary"
@@ -21,9 +26,12 @@ const ProjectBody = ({ description, members, tags }: Props) => {
 
   return (
     <div>
-      <BlockContent blocks={description.en} serializers={{ marks: { link } }} />
+      <BlockContent
+        blocks={description[locale]}
+        serializers={{ marks: { link } }}
+      />
       <div className="text-gray">
-        Created by:{' '}
+        {t('createdBy')}:{' '}
         {members.map((member, index) => (
           <Fragment key={member._id}>
             <a

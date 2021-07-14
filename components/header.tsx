@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import useTranslation from '../hooks/useTranslation';
 import Container from './container';
+import FlagButton from './flag-button';
 
 type Props = {
   siteName: string;
@@ -7,6 +9,7 @@ type Props = {
 
 const Header = ({ siteName }: Props) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <nav className="fixed z-50 w-full bg-dark">
@@ -48,17 +51,21 @@ const Header = ({ siteName }: Props) => {
               className="text-light sm:text-gray text-3xl sm:text-base"
               onClick={() => setIsNavOpen(false)}
             >
-              Projects
+              {t('projects')}
             </a>
           </li>
-          <li>
+          <li className="mr-0 sm:mr-5 mb-16 sm:mb-0">
             <a
               href="#about"
               className="text-light sm:text-gray text-3xl sm:text-base"
               onClick={() => setIsNavOpen(false)}
             >
-              About
+              {t('about')}
             </a>
+          </li>
+          <li className="flex gap-3">
+            <FlagButton locale="en" />
+            <FlagButton locale="es" />
           </li>
         </ul>
       </Container>
