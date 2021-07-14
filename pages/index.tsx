@@ -60,7 +60,9 @@ const Home = ({
     <div>
       <Layout socialLinks={socialLinks}>
         <Head>
-          <title>{siteName}</title>
+          <title>
+            {siteName} | {t('developer')}
+          </title>
         </Head>
 
         <Header siteName={siteName} />
@@ -69,7 +71,8 @@ const Home = ({
           {/* showcase */}
           <section id="showcase">
             <div className="flex flex-col justify-center items-center h-screen">
-              <h1 className="text-primary text-center text-6xl md:text-7xl lg:text-8xl font-bold mb-4">
+              <h1 className="bg-gradient-to-r from-blue-700 to-primary text-transparent bg-clip-text text-center text-6xl md:text-7xl lg:text-8xl font-bold mb-4 p-2">
+              {/* <h1 className="text-primary text-center text-6xl md:text-7xl lg:text-8xl font-bold mb-4"> */}
                 {t('greeting')} {shortName}.
               </h1>
               <h2 className="text-gray text-center text-xl md:text-2xl lg:text-3xl">

@@ -1,5 +1,6 @@
 export const langStrings = {
   en: {
+    developer: 'Developer',
     greeting: "Hello, I'm",
     imA: "I'm a",
     my: 'Mis',
@@ -10,6 +11,7 @@ export const langStrings = {
     seeCode: 'See code',
   },
   es: {
+    developer: 'Desarrollador',
     greeting: 'Hola, soy',
     imA: 'Soy un',
     my: 'Mis',
