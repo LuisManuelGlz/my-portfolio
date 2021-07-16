@@ -16,8 +16,11 @@ export const langStrings = {
     nameError: 'Please enter a name.',
     emailError: 'Please enter an email.',
     messageError: 'Please enter a message.',
-    reCaptchaNotVerified: 'Please accept the reCAPTCHA.',
+    reCaptchaNotVerified:
+      '🤖 Please help me to confirm that you are not a robot.',
     sendButton: 'Send',
+    emailSent: '🚀 Email sent successfully.',
+    emailNotSent: 'Oops! Something went wrong.',
   },
   es: {
     developer: 'Desarrollador',
@@ -36,7 +39,10 @@ export const langStrings = {
     nameError: 'Por favor, introduce un nombre.',
     emailError: 'Por favor, introduce un email.',
     messageError: 'Por favor, introduce un mensaje.',
-    reCaptchaNotVerified: 'Por favor acepta el reCAPTCHA.',
+    reCaptchaNotVerified:
+      '🤖 Por favor, ayúdame a confirmar que no eres un robot.',
     sendButton: 'Enviar',
+    emailSent: '🚀 Email enviado exitosamente.',
+    emailNotSent: '¡Ups! Algo salió mal.',
   },
 };
