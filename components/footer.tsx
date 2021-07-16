@@ -13,7 +13,7 @@ const Footer = ({ socialLinks: { github, linkedIn, twitter } }: Props) => {
         <div className="py-8 flex justify-center">
           {github && (
             <SocialIcon
-              style={{ height: 40, width: 40, marginRight: 20 }}
+              style={{ height: 45, width: 45, marginRight: 20 }}
               url={github}
               target="_blank"
               rel="noopener noreferrer"
@@ -23,7 +23,7 @@ const Footer = ({ socialLinks: { github, linkedIn, twitter } }: Props) => {
           )}
           {linkedIn && (
             <SocialIcon
-              style={{ height: 40, width: 40, marginRight: 20 }}
+              style={{ height: 45, width: 45, marginRight: 20 }}
               url={linkedIn}
               target="_blank"
               rel="noopener noreferrer"
@@ -33,7 +33,7 @@ const Footer = ({ socialLinks: { github, linkedIn, twitter } }: Props) => {
           )}
           {twitter && (
             <SocialIcon
-              style={{ height: 40, width: 40, marginRight: 20 }}
+              style={{ height: 45, width: 45, marginRight: 20 }}
               url={twitter}
               target="_blank"
               rel="noopener noreferrer"

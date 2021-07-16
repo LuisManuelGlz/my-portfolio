@@ -48,7 +48,7 @@ const Header = ({ siteName }: Props) => {
           <li className="mr-0 sm:mr-5 mb-16 sm:mb-0">
             <a
               href="#projects"
-              className="text-light sm:text-gray text-3xl sm:text-base"
+              className="text-light sm:text-gray hover:text-light focus:text-light text-3xl sm:text-base"
               onClick={() => setIsNavOpen(false)}
             >
               {t('projects')}
@@ -57,10 +57,19 @@ const Header = ({ siteName }: Props) => {
           <li className="mr-0 sm:mr-5 mb-16 sm:mb-0">
             <a
               href="#about"
-              className="text-light sm:text-gray text-3xl sm:text-base"
+              className="text-light sm:text-gray hover:text-light focus:text-light text-3xl sm:text-base"
               onClick={() => setIsNavOpen(false)}
             >
               {t('about')}
+            </a>
+          </li>
+          <li className="mr-0 sm:mr-5 mb-16 sm:mb-0">
+            <a
+              href="#contact"
+              className="text-light sm:text-gray hover:text-light focus:text-light text-3xl sm:text-base"
+              onClick={() => setIsNavOpen(false)}
+            >
+              {t('contact')}
             </a>
           </li>
           <li className="flex gap-3">

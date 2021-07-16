@@ -15,7 +15,6 @@ module.exports = {
         secondary: '#141414',
         dark: '#000000',
         light: '#ffffff',
-        black: '#000000',
         gray: '#b3b3b3',
       },
       textColor: {
@@ -23,7 +22,6 @@ module.exports = {
         secondary: '#141414',
         dark: '#000000',
         light: '#ffffff',
-        black: '#000000',
         gray: '#b3b3b3',
       },
     },
