@@ -20,7 +20,7 @@ const ContactForm = () => {
   const recaptchaRef = useRef<ReCAPTCHA>();
 
   const onSubmit = async ({ name, email, message }) => {
-    if (recaptchaRef.current.getValue()) {
+    if (isReCaptchaVerified) {
       const templateParams = {
         from_name: name,
         from_email: email,
@@ -46,6 +46,12 @@ const ContactForm = () => {
       }
     } else {
       setIsReCaptchaVerified(false);
+    }
+  };
+
+  const onReCaptchaChange = () => {
+    if (recaptchaRef.current.getValue()) {
+      setIsReCaptchaVerified(true);
     }
   };
 
@@ -96,6 +102,7 @@ const ContactForm = () => {
         ref={recaptchaRef}
         theme="dark"
         sitekey={config.recaptchaSiteKey}
+        onChange={onReCaptchaChange}
       />
       {isReCaptchaVerified === false && (
         <span className="text-red-400">{t('reCaptchaNotVerified')}</span>
