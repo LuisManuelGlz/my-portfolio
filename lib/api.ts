@@ -1,4 +1,7 @@
 import client from './sanity';
+import emailjs from 'emailjs-com';
+import { TemplateParamsType } from '../types/templateParams';
+import config from '../config';
 
 export const getAllProjects = async () => {
   const data = await client.fetch(
@@ -49,4 +52,13 @@ export const getSiteSettings = async () => {
     }`
   );
   return data;
+};
+
+export const sendEmail = async (templateParams: TemplateParamsType) => {
+  return await emailjs.send(
+    config.emailjsServiceId,
+    config.emailjsTemplateId,
+    templateParams,
+    config.emailjsUserId
+  );
 };

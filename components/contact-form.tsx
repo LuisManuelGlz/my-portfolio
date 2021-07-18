@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { toast } from 'react-toastify';
-import emailjs from 'emailjs-com';
 import { useForm } from 'react-hook-form';
+import { sendEmail } from '../lib/api';
 import useTranslation from '../hooks/useTranslation';
 import config from '../config';
 
@@ -24,20 +24,12 @@ const ContactForm = () => {
       const templateParams = {
         from_name: name,
         from_email: email,
-        to_name: 'Luis',
         message,
       };
 
       try {
-        await emailjs.send(
-          config.emailjsServiceId,
-          config.emailjsTemplateId,
-          templateParams,
-          config.emailjsUserId
-        );
-
+        await sendEmail(templateParams);
         toast.dark(t('emailSent'));
-
         reset();
         recaptchaRef.current.reset();
         setIsReCaptchaVerified(null); // null means that ReCaptcha is verified
