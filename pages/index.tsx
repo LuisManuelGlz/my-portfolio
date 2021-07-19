@@ -120,7 +120,7 @@ const Home = ({
                 {t('about')}
               </h3>
               <BlockContent blocks={about[locale]} serializers={serializers} />
-              <div className="flex gap-5 mt-8">
+              <div className="flex flex-wrap gap-5 mt-8">
                 {skills.map(({ _id, name, logo, backgroundColor: { hex } }) => (
                   <div
                     key={_id}
