@@ -1,3 +1,4 @@
+import ImageType from './image';
 import LocaleBlockType from './localeBlock';
 import Member from './member';
 
@@ -7,7 +8,7 @@ type ProjectType = {
   description: LocaleBlockType;
   members: Member[];
   tags: string[];
-  image: { asset: { url: string } };
+  image: ImageType;
   website: string;
   repo: string;
 };

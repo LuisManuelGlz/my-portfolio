@@ -10,7 +10,8 @@ import Header from '../components/header';
 import Project from '../components/project';
 import ISiteSettings from '../types/siteSettings';
 import IProject from '../types/project';
-import { getAllProjects, getSiteSettings } from '../lib/api';
+import ISkill from '../types/skill';
+import { getAllProjects, getSiteSettings, getSkills } from '../lib/api';
 import useTranslation from '../hooks/useTranslation';
 import { LanguageContext } from '../contexts/LanguageContext';
 import ContactForm from '../components/contact-form';
@@ -20,14 +21,16 @@ import 'react-toastify/dist/ReactToastify.css';
 type Props = {
   siteSettings: ISiteSettings;
   allProjects: IProject[];
+  skills: ISkill[];
 };
 
 const Home = ({
   siteSettings: { siteName, shortName, role, about, ...socialLinks },
   allProjects,
+  skills,
 }: Props) => {
   const { locale } = useContext(LanguageContext);
-  const { t } = useTranslation();  
+  const { t } = useTranslation();
 
   useEffect(() => {
     AOS.init({
@@ -117,6 +120,21 @@ const Home = ({
                 {t('about')}
               </h3>
               <BlockContent blocks={about[locale]} serializers={serializers} />
+              <div className="flex gap-5 mt-8">
+                {skills.map(({ _id, name, logo, backgroundColor: { hex } }) => (
+                  <div
+                    key={_id}
+                    style={{ backgroundColor: hex }}
+                    className="rounded-full w-20 h-20 shadow-2xl flex justify-center items-center"
+                  >
+                    <img
+                      className="w-14 object-cover"
+                      src={logo.asset.url}
+                      alt={`${name} logo`}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 
@@ -145,9 +163,10 @@ export default Home;
 
 export const getStaticProps = async () => {
   const siteSettings = await getSiteSettings();
+  const skills = await getSkills();
   const allProjects = await getAllProjects();
 
   return {
-    props: { siteSettings, allProjects },
+    props: { siteSettings, allProjects, skills },
   };
 };

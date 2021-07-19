@@ -31,6 +31,23 @@ export const getAllProjects = async () => {
   return data;
 };
 
+export const getSkills = async () => {
+  const data = await client.fetch(
+    `*[_type == 'skill']{
+      _id,
+      name,
+      backgroundColor,
+      logo{
+        asset->{
+          _id,
+          url,
+        }
+      }
+    }`
+  );
+  return data;
+};
+
 export const getSiteSettings = async () => {
   const data = await client.fetch(
     `*[_type == 'siteSettings'][0]{
