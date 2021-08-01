@@ -90,12 +90,12 @@ const Home = ({
 
           {/* projects */}
           <section id="projects">
-            <div className="py-16 text-light">
-              <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
-                {t('my')}{' '}
-                <span className="block text-primary">{t('projects')}</span>
+            <div className={styles.projectsContainer}>
+              <h3 className={styles.projectsHeader}>
+                <span>{t('my')}</span>
+                <span>{t('projects')}</span>
               </h3>
-              <div className="flex flex-col items-center">
+              <div className={styles.projectsListContainer}>
                 {allProjects.map((project, index) => (
                   <Project
                     key={project._id}
