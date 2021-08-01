@@ -50,6 +50,40 @@
   align-items: center;
 }
 
+.aboutContainer {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  color: $light;
+}
+
+.aboutHeader {
+  margin-bottom: 2rem;
+  font-weight: 700;
+  font-size: 4.5rem;
+  line-height: 1;
+  color: $primary;
+}
+
+.aboutSkillsListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.aboutSkill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9999px;
+}
+
+.aboutSkillImage {
+  width: 3.5rem;
+}
+
 @media (max-width: $breakpoint-desktop) {
   .showcaseGreeting {
     font-size: 4.5rem;
@@ -60,7 +94,8 @@
     line-height: 2rem;
   }
 
-  .projectsHeader {
+  .projectsHeader,
+  .aboutHeader {
     font-size: 3.75rem;
   }
 }
@@ -75,7 +110,8 @@
     line-height: 1.75rem;
   }
 
-  .projectsHeader {
+  .projectsHeader,
+  .aboutHeader {
     font-size: 3rem;
   }
 }

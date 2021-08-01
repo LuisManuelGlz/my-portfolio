@@ -115,20 +115,20 @@ const Home = ({
 
           {/* about */}
           <section id="about">
-            <div className="text-light py-16">
-              <h3 className="text-5xl md:text-6xl lg:text-7xl text-primary font-bold mb-8">
+            <div className={styles.aboutContainer}>
+              <h3 className={styles.aboutHeader}>
                 {t('about')}
               </h3>
               <BlockContent blocks={about[locale]} serializers={serializers} />
-              <div className="flex flex-wrap gap-5 mt-8">
+              <div className={styles.aboutSkillsListContainer}>
                 {skills.map(({ _id, name, logo, backgroundColor: { hex } }) => (
                   <div
                     key={_id}
                     style={{ backgroundColor: hex }}
-                    className="rounded-full w-20 h-20 shadow-2xl flex justify-center items-center"
+                    className={styles.aboutSkill}
                   >
                     <img
-                      className="w-14 object-cover"
+                      className={styles.aboutSkillImage}
                       src={logo.asset.url}
                       alt={`${name} logo`}
                     />
