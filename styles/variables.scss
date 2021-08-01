@@ -1,0 +1,15 @@
+$primary: #0099ff;
+$secondary: #141414;
+$dark: #000000;
+$light: #ffffff;
+$gray: #b3b3b3;
+$blue: #1D4ED8;
+$soft-blue: #2563EB;
+
+// Gradients
+$primary-gradient: linear-gradient(to right, $blue, $primary);
+$primary-gradient-inverted: linear-gradient(to right, $primary, $soft-blue);
+
+// Breakpoints
+$breakpoint-desktop: 1024px;
+$breakpoint-tablet: 768px;

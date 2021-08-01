@@ -1,0 +1,49 @@
+@import './variables';
+
+.showcaseContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.showcaseGreeting {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 6rem;
+  line-height: 1;
+  color: transparent;
+  background: $primary-gradient;
+  background-clip: text;
+}
+
+.showcaseRole {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  color: $gray;
+}
+
+@media (max-width: $breakpoint-desktop) {
+  .showcaseGreeting {
+    font-size: 4.5rem;
+  }
+
+  .showcaseRole {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .showcaseGreeting {
+    font-size: 3.75rem;
+  }
+
+  .showcaseRole {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}

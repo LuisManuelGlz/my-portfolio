@@ -15,6 +15,7 @@ import { getAllProjects, getSiteSettings, getSkills } from '../lib/api';
 import useTranslation from '../hooks/useTranslation';
 import { LanguageContext } from '../contexts/LanguageContext';
 import ContactForm from '../components/contact-form';
+import styles from '../styles/Home.module.scss';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -77,12 +78,11 @@ const Home = ({
         <Container>
           {/* showcase */}
           <section id="showcase">
-            <div className="flex flex-col justify-center items-center h-screen">
-              <h1 className="bg-gradient-to-r from-blue-700 to-primary text-transparent bg-clip-text text-center text-6xl md:text-7xl lg:text-8xl font-bold mb-4 p-2">
-                {/* <h1 className="text-primary text-center text-6xl md:text-7xl lg:text-8xl font-bold mb-4"> */}
+            <div className={styles.showcaseContainer}>
+              <h1 className={styles.showcaseGreeting}>
                 {t('greeting')} {shortName}.
               </h1>
-              <h2 className="text-gray text-center text-xl md:text-2xl lg:text-3xl">
+              <h2 className={styles.showcaseRole}>
                 {t('imA')} {role[locale]}
               </h2>
             </div>
