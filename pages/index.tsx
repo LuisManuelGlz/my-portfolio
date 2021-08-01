@@ -140,8 +140,8 @@ const Home = ({
 
           {/* contact */}
           <section id="contact">
-            <div className="py-16">
-              <h3 className="text-5xl md:text-6xl lg:text-7xl text-primary font-bold mb-8">
+            <div className={styles.contactContainer}>
+              <h3 className={styles.contactHeader}>
                 {t('contact')}
               </h3>
               <ContactForm />
