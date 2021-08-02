@@ -4,7 +4,8 @@
   position: fixed;
   z-index: 50;
   width: 100%;
-  background: $dark;
+  background-color: $dark-invisible;
+  backdrop-filter: blur(10px);
 }
 
 .headerHamburgerButton {
@@ -102,7 +103,7 @@
   .headerLink {
     font-size: 1rem;
     line-height: 1.5rem;
-    color: $gray;
+    color: $moon;
 
     &:hover,
     &:focus {

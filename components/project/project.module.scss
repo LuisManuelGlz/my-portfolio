@@ -8,7 +8,27 @@
 }
 
 .projectImageContainer {
+  position: relative;
   margin-bottom: 1rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 3rem;
+    background-color: white;
+    z-index: -2;
+    filter: blur(25px);
+    transition: inset 2s;
+  }
+
+  &:hover::before {
+    inset: -0.1rem;
+  }
+
+  &::before,
+  &::after {
+    background: $primary-gradient-diagonal;
+  }
 }
 
 .projectImage {

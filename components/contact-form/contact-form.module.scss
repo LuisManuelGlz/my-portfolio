@@ -46,7 +46,15 @@
   border-radius: 0.25rem;
   font-weight: 700;
   color: $light;
-  background: $primary-gradient-inverted;
+  background-image: $primary-gradient-inverted;
+  background-size: 200%;
+  background-position: left;
+  transition: background-position 2s;
+
+  &:hover,
+  &:focus {
+    background-position: right;
+  }
 }
 
 @media (min-width: $breakpoint-mobile) {

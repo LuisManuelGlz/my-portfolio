@@ -18,12 +18,15 @@
   color: transparent;
   background: $primary-gradient;
   background-clip: text;
+  background-size: 300%;
+  background-position: left;
+  animation: animated-text 5s infinite alternate;
 }
 
 .showcaseRole {
   font-size: 1.875rem;
   line-height: 2.25rem;
-  color: $gray;
+  color: $moon;
 }
 
 .projectsContainer {
@@ -79,10 +82,24 @@
   width: 5rem;
   height: 5rem;
   border-radius: 9999px;
+  transition: all 0.5s;
+
+  &:hover,
+  &:focus {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
 }
 
 .aboutSkillImage {
   width: 3.5rem;
+  object-fit: cover;
+  transition: all 0.5s;
+
+  &:hover,
+  &:focus {
+    width: 3.9rem;
+  }
 }
 
 .aboutBlockContent {
@@ -97,6 +114,15 @@
   padding-bottom: 4rem;
 }
 
+@keyframes animated-text {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
 @media (max-width: $breakpoint-desktop) {
   .showcaseGreeting {
     font-size: 4.5rem;
@@ -106,13 +132,13 @@
     font-size: 1.5rem;
     line-height: 2rem;
   }
-  
+
   .projectsHeader,
   .aboutHeader,
   .contactHeader {
     font-size: 3.75rem;
   }
-  
+
   .aboutBlockContent {
     width: 80%;
   }

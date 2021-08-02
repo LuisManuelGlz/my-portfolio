@@ -2,14 +2,23 @@ $primary: #0099ff;
 $secondary: #141414;
 $dark: #000000;
 $light: #ffffff;
-$gray: #b3b3b3;
-$blue: #1d4ed8;
-$soft-blue: #2563eb;
+$moon: #b3b3b3;
+$king: #2563eb;
+$sky: #00dfd8;
 $danger: #f87171;
 
+$dark-invisible: rgba(0, 0, 0, 0.5);
+
 // Gradients
-$primary-gradient: linear-gradient(to right, $blue, $primary);
-$primary-gradient-inverted: linear-gradient(to right, $primary, $soft-blue);
+$primary-gradient: linear-gradient(to right, $sky, $primary, $primary, $sky);
+$primary-gradient-diagonal: linear-gradient(
+  45deg,
+  $sky,
+  $primary,
+  $primary,
+  $sky
+);
+$primary-gradient-inverted: linear-gradient(to right, $primary, $king);
 
 // Breakpoints
 $breakpoint-extra-large-desktop: 1536px;
