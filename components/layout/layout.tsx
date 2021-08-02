@@ -1,6 +1,6 @@
-import Footer from './footer';
-import Meta from './meta';
-import ISocialLinks from '../types/socialLinks';
+import Footer from '../footer';
+import Meta from '../meta';
+import ISocialLinks from '../../types/socialLinks';
 
 type Props = {
   children: React.ReactNode;
