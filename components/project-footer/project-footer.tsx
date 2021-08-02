@@ -1,5 +1,6 @@
 import React from 'react';
-import useTranslation from '../hooks/useTranslation';
+import useTranslation from '../../hooks/useTranslation';
+import styles from './project-footer.module.scss';
 
 type Props = {
   website?: string;
@@ -10,9 +11,9 @@ const ProjectFooter = ({ website, repo }: Props) => {
   const { t } = useTranslation();
 
   return (
-    <div className="flex sm:block flex-col">
+    <div className={styles.projectFooterContainer}>
       <a
-        className="font-medium text-center py-3 px-4 rounded-full bg-primary mb-4 md:mb-0 sm:mr-4"
+        className={styles.projectFooterGoToSiteButton}
         href={website}
         target="_blank"
         rel="noopener noreferrer"
@@ -21,7 +22,7 @@ const ProjectFooter = ({ website, repo }: Props) => {
       </a>
 
       <a
-        className="font-medium text-center py-3 px-4 rounded-full g-none sm:bg-secondary"
+        className={styles.projectFooterSeeCodeButton}
         href={repo}
         target="_blank"
         rel="noopener noreferrer"

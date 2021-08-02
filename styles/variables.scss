@@ -11,6 +11,8 @@ $primary-gradient: linear-gradient(to right, $blue, $primary);
 $primary-gradient-inverted: linear-gradient(to right, $primary, $soft-blue);
 
 // Breakpoints
+$breakpoint-extra-large-desktop: 1536px;
 $breakpoint-large-desktop: 1280px;
 $breakpoint-desktop: 1024px;
 $breakpoint-tablet: 768px;
+$breakpoint-mobile: 640px;

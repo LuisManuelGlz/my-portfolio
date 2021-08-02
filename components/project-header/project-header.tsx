@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectTitle from './project-title';
+import ProjectTitle from '../project-title';
 
 type Props = {
   title: string;

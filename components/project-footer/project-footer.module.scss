@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+
+.projectFooterContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.projectFooterGoToSiteButton,
+.projectFooterSeeCodeButton {
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.projectFooterGoToSiteButton {
+  margin-bottom: 1rem;
+  background: $primary;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .projectFooterGoToSiteButton {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: $breakpoint-mobile) {
+  .projectFooterContainer {
+    display: block;
+  }
+
+  .projectFooterGoToSiteButton {
+    margin-right: 1rem;
+  }
+
+  .projectFooterSeeCodeButton {
+    background: $secondary;
+  }
+}

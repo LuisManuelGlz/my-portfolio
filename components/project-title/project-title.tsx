@@ -1,15 +1,12 @@
 import React, { ReactNode } from 'react';
+import styles from './project-title.module.scss';
 
 type Props = {
   children?: ReactNode;
 };
 
 const ProjectTitle = ({ children }: Props) => {
-  return (
-    <h4 className="text-primary text-xl font-semibold mb-2">
-      {children}
-    </h4>
-  );
-}
+  return <h4 className={styles.projectTitleContainer}>{children}</h4>;
+};
 
 export default ProjectTitle;

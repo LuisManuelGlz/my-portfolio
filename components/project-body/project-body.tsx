@@ -1,7 +1,8 @@
 import React, { Fragment, useContext } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import useTranslation from '../hooks/useTranslation';
-import { LanguageContext } from '../contexts/LanguageContext';
+import useTranslation from '../../hooks/useTranslation';
+import { LanguageContext } from '../../contexts/LanguageContext';
+import styles from './project-body.module.scss';
 
 type Props = {
   description: any;
@@ -30,12 +31,12 @@ const ProjectBody = ({ description, members, tags }: Props) => {
         blocks={description[locale]}
         serializers={{ marks: { link } }}
       />
-      <div className="text-gray">
+      <div className={styles.projectBodyCreatedByContainer}>
         {t('createdBy')}:{' '}
         {members.map((member, index) => (
           <Fragment key={member._id}>
             <a
-              className="text-primary"
+              className={styles.projectBodyAuthorLink}
               href={member.github}
               target="_blank"
               rel="noopener noreferrer"
@@ -47,12 +48,9 @@ const ProjectBody = ({ description, members, tags }: Props) => {
           </Fragment>
         ))}
       </div>
-      <div className="flex flex-wrap mt-4 mb-8">
+      <div className={styles.projectBodyTagsContainer}>
         {tags.map((tag, index) => (
-          <div
-            key={index}
-            className="text-sm py-1 px-3 rounded-full bg-secondary mr-2 mb-2"
-          >
+          <div key={index} className={styles.projectBodyTag}>
             {tag}
           </div>
         ))}
