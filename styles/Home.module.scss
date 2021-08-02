@@ -82,7 +82,7 @@
   width: 5rem;
   height: 5rem;
   border-radius: 9999px;
-  transition: all 0.5s;
+  transition: width 0.5s, height 0.5s;
 
   &:hover,
   &:focus {

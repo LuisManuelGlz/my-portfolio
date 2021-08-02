@@ -5,6 +5,10 @@
   flex-direction: column;
   margin-bottom: 4rem;
   width: 91.666667%;
+
+  &:hover .projectImageContainer::before {
+    inset: -0.1rem;
+  }
 }
 
 .projectImageContainer {
@@ -19,10 +23,6 @@
     z-index: -2;
     filter: blur(25px);
     transition: inset 2s;
-  }
-
-  &:hover::before {
-    inset: -0.1rem;
   }
 
   &::before,
