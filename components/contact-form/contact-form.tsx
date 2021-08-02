@@ -2,9 +2,10 @@ import React, { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
-import { sendEmail } from '../lib/api';
-import useTranslation from '../hooks/useTranslation';
-import config from '../config';
+import { sendEmail } from '../../lib/api';
+import useTranslation from '../../hooks/useTranslation';
+import config from '../../config';
+import styles from './contact-form.module.scss';
 
 const ContactForm = () => {
   const { t } = useTranslation();
@@ -49,46 +50,54 @@ const ContactForm = () => {
 
   return (
     <form
-      className="flex flex-col gap-3 lg:w-2/3"
+      // flex flex-col gap-3 lg:w-2/3
+      className={styles.contactFormContainer}
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex flex-col sm:flex-row gap-3">
-        <div className="w-full">
+      {/* flex flex-col sm:flex-row gap-3 */}
+      <div className={styles.contactFormPersonalDataContainer}>
+        <div className={styles.contactFormGroup}>
           <input
             {...register('name', { required: true })}
-            className="rounded border border-transparent focus:ring-2 w-full p-3 bg-secondary text-light"
+            className={`${styles.contactFormInputFull} ${styles.contactFormInput}`}
             type="text"
             autoComplete="off"
             maxLength={255}
             placeholder={t('namePlaceholder')}
           />
           {errors.name && (
-            <span className="text-red-400">{t('nameError')}</span>
+            <span className={styles.contactFormErrorMessage}>
+              {t('nameError')}
+            </span>
           )}
         </div>
-        <div className="w-full">
+        <div className={styles.contactFormGroup}>
           <input
             {...register('email', { required: true })}
-            className="rounded border border-transparent focus:ring-2 w-full p-3 bg-secondary text-light"
+            className={`${styles.contactFormInputFull} ${styles.contactFormInput}`}
             autoComplete="off"
             maxLength={255}
             type="email"
             placeholder={t('emailPlaceholder')}
           />
           {errors.email && (
-            <span className="text-red-400">{t('emailError')}</span>
+            <span className={styles.contactFormErrorMessage}>
+              {t('emailError')}
+            </span>
           )}
         </div>
       </div>
       <textarea
         {...register('message', { required: true })}
-        className="resize-none rounded border border-transparent focus:ring-2 p-3 bg-secondary text-light"
+        className={`${styles.contactFormInputNoResize} ${styles.contactFormInput}`}
         maxLength={500}
         rows={10}
         placeholder={t('messagePlaceholder')}
       />
       {errors.message && (
-        <span className="text-red-400">{t('messageError')}</span>
+        <span className={styles.contactFormErrorMessage}>
+          {t('messageError')}
+        </span>
       )}
       <ReCAPTCHA
         ref={recaptchaRef}
@@ -97,10 +106,12 @@ const ContactForm = () => {
         onChange={onReCaptchaChange}
       />
       {isReCaptchaVerified === false && (
-        <span className="text-red-400">{t('reCaptchaNotVerified')}</span>
+        <span className={styles.contactFormErrorMessage}>
+          {t('reCaptchaNotVerified')}
+        </span>
       )}
       <button
-        className="rounded bg-gradient-to-r from-primary to-blue-600 font-bold p-3 text-light"
+        className={styles.contactFormSubmitButton}
         type="submit"
       >
         {t('sendButton')}

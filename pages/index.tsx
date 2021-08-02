@@ -8,6 +8,7 @@ import Layout from '../components/layout';
 import Container from '../components/container';
 import Header from '../components/header';
 import Project from '../components/project';
+import CommonLink from '../components/common-link';
 import ISiteSettings from '../types/siteSettings';
 import IProject from '../types/project';
 import ISkill from '../types/skill';
@@ -43,22 +44,13 @@ const Home = ({
   }, []);
 
   const link = ({ mark: { href }, children }) => (
-    <a
-      className="text-primary"
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {children}
-    </a>
+    <CommonLink href={href}>{children}</CommonLink>
   );
 
   const serializers = {
     types: {
       block: ({ children }) => (
-        <p className="w-full sm:w-5/6 md:w-4/5 lg:w-3/4 text-light text-2xl">
-          {children}
-        </p>
+        <p className={styles.aboutBlockContent}>{children}</p>
       ),
     },
     marks: { link },
@@ -116,9 +108,7 @@ const Home = ({
           {/* about */}
           <section id="about">
             <div className={styles.aboutContainer}>
-              <h3 className={styles.aboutHeader}>
-                {t('about')}
-              </h3>
+              <h3 className={styles.aboutHeader}>{t('about')}</h3>
               <BlockContent blocks={about[locale]} serializers={serializers} />
               <div className={styles.aboutSkillsListContainer}>
                 {skills.map(({ _id, name, logo, backgroundColor: { hex } }) => (
@@ -141,9 +131,7 @@ const Home = ({
           {/* contact */}
           <section id="contact">
             <div className={styles.contactContainer}>
-              <h3 className={styles.contactHeader}>
-                {t('contact')}
-              </h3>
+              <h3 className={styles.contactHeader}>{t('contact')}</h3>
               <ContactForm />
             </div>
           </section>

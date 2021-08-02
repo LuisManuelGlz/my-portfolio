@@ -3,8 +3,9 @@ $secondary: #141414;
 $dark: #000000;
 $light: #ffffff;
 $gray: #b3b3b3;
-$blue: #1D4ED8;
-$soft-blue: #2563EB;
+$blue: #1d4ed8;
+$soft-blue: #2563eb;
+$danger: #f87171;
 
 // Gradients
 $primary-gradient: linear-gradient(to right, $blue, $primary);
@@ -16,3 +17,6 @@ $breakpoint-large-desktop: 1280px;
 $breakpoint-desktop: 1024px;
 $breakpoint-tablet: 768px;
 $breakpoint-mobile: 640px;
+
+// Ring
+$ring-color: rgba(59, 130, 246, 0.5);

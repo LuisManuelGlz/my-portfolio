@@ -85,6 +85,13 @@
   width: 3.5rem;
 }
 
+.aboutBlockContent {
+  width: 75%;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: $light;
+}
+
 .contactContainer {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -99,11 +106,15 @@
     font-size: 1.5rem;
     line-height: 2rem;
   }
-
+  
   .projectsHeader,
   .aboutHeader,
   .contactHeader {
     font-size: 3.75rem;
+  }
+  
+  .aboutBlockContent {
+    width: 80%;
   }
 }
 
@@ -121,5 +132,11 @@
   .aboutHeader,
   .contactHeader {
     font-size: 3rem;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .aboutBlockContent {
+    width: 100%;
   }
 }

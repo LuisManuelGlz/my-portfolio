@@ -3,6 +3,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import useTranslation from '../../hooks/useTranslation';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import styles from './project-body.module.scss';
+import CommonLink from '../common-link';
 
 type Props = {
   description: any;
@@ -15,14 +16,7 @@ const ProjectBody = ({ description, members, tags }: Props) => {
   const { t } = useTranslation();
 
   const link = ({ mark: { href }, children }) => (
-    <a
-      className="text-primary"
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {children}
-    </a>
+    <CommonLink href={href}>{children}</CommonLink>
   );
 
   return (
