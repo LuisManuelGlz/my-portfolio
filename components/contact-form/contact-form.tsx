@@ -20,7 +20,7 @@ const ContactForm = () => {
 
   const recaptchaRef = useRef<ReCAPTCHA>();
 
-  const onSubmit = async ({ name, email, message }) => {
+  const onSubmit = ({ name, email, message }) => {
     if (isReCaptchaVerified) {
       const templateParams = {
         from_name: name,
@@ -28,15 +28,16 @@ const ContactForm = () => {
         message,
       };
 
-      try {
-        await sendEmail(templateParams);
-        toast.dark(t('emailSent'));
-        reset();
-        recaptchaRef.current.reset();
-        setIsReCaptchaVerified(null); // null means that ReCaptcha is verified
-      } catch (error) {
-        toast.error(t('emailNotSent'));
-      }
+      sendEmail(templateParams)
+        .then(() => {
+          toast.dark(t('emailSent'));
+          reset();
+          recaptchaRef.current.reset();
+          setIsReCaptchaVerified(null); // null means that ReCaptcha has been reset
+        })
+        .catch(() => {
+          toast.error(t('emailNotSent'));
+        });
     } else {
       setIsReCaptchaVerified(false);
     }
@@ -45,16 +46,16 @@ const ContactForm = () => {
   const onReCaptchaChange = () => {
     if (recaptchaRef.current.getValue()) {
       setIsReCaptchaVerified(true);
+    } else {
+      setIsReCaptchaVerified(false);
     }
   };
 
   return (
     <form
-      // flex flex-col gap-3 lg:w-2/3
       className={styles.contactFormContainer}
       onSubmit={handleSubmit(onSubmit)}
     >
-      {/* flex flex-col sm:flex-row gap-3 */}
       <div className={styles.contactFormPersonalDataContainer}>
         <div className={styles.contactFormGroup}>
           <input
@@ -110,10 +111,7 @@ const ContactForm = () => {
           {t('reCaptchaNotVerified')}
         </span>
       )}
-      <button
-        className={styles.contactFormSubmitButton}
-        type="submit"
-      >
+      <button className={styles.contactFormSubmitButton} type="submit">
         {t('sendButton')}
       </button>
     </form>
