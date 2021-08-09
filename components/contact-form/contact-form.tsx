@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
@@ -6,11 +6,14 @@ import { sendEmail } from '../../lib/api';
 import useTranslation from '../../hooks/useTranslation';
 import config from '../../config';
 import styles from './contact-form.module.scss';
+import { LanguageContext } from '../../contexts/LanguageContext';
 
 const ContactForm = () => {
   const { t } = useTranslation();
 
+  const [reCaptchaValue, setReCaptchaValue] = useState(null);
   const [isReCaptchaVerified, setIsReCaptchaVerified] = useState(null);
+  const { locale } = useContext(LanguageContext);
   const {
     register,
     reset,
@@ -26,6 +29,7 @@ const ContactForm = () => {
         from_name: name,
         from_email: email,
         message,
+        'g-recaptcha-response': reCaptchaValue,
       };
 
       sendEmail(templateParams)
@@ -33,6 +37,7 @@ const ContactForm = () => {
           toast.dark(t('emailSent'));
           reset();
           recaptchaRef.current.reset();
+          setReCaptchaValue(null);
           setIsReCaptchaVerified(null); // null means that ReCaptcha has been reset
         })
         .catch(() => {
@@ -45,8 +50,10 @@ const ContactForm = () => {
 
   const onReCaptchaChange = () => {
     if (recaptchaRef.current.getValue()) {
+      setReCaptchaValue(recaptchaRef.current.getValue());
       setIsReCaptchaVerified(true);
     } else {
+      setReCaptchaValue(null);
       setIsReCaptchaVerified(false);
     }
   };
@@ -103,6 +110,7 @@ const ContactForm = () => {
       <ReCAPTCHA
         ref={recaptchaRef}
         theme="dark"
+        hl={`${locale}${locale === 'es' ? '-419' : ''}`} // If locale is 'es', '-419' is added, '' otherwise
         sitekey={config.recaptchaSiteKey}
         onChange={onReCaptchaChange}
       />
