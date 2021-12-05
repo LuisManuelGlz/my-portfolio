@@ -5,7 +5,7 @@ import config from '../config';
 
 export const getAllProjects = async () => {
   const data = await client.fetch(
-    `*[_type == 'project' && show == true]{
+    `*[_type == 'project' && show == true] | order(order asc) {
         _id,
         title,
         description{
