@@ -31,7 +31,7 @@ export const langStrings = {
     createdBy: 'Creato por',
     about: 'Acerca de',
     goToSite: 'Ver sitio',
-    seeCode: 'Código fuente',
+    seeCode: 'Ver código',
     contact: 'Contáctame',
     namePlaceholder: 'Nombre',
     emailPlaceholder: 'Email',
