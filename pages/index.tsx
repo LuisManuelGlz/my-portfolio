@@ -17,6 +17,7 @@ import { getAllProjects, getSiteSettings, getSkills } from '../lib/api.dev';
 import useTranslation from '../hooks/useTranslation';
 import { LanguageContext } from '../contexts/LanguageContext';
 import ContactForm from '../components/contact-form';
+import Navigation from '../components/navigation';
 import styles from '../styles/Home.module.scss';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -66,7 +67,7 @@ const Home = ({
           </title>
         </Head>
 
-        <Header siteName={siteName} />
+        <Navigation siteName={siteName} />
 
         <Container>
           {/* showcase */}
