@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Box, Container, Heading, Stack } from '@chakra-ui/react';
 import useTranslation from '../hooks/useTranslation';
 import ToggleModeButton from './toggle-mode-button';
@@ -6,10 +7,10 @@ import NavLink from './nav-link';
 import LocaleMenu from './locale-menu';
 
 type Props = {
-  siteName: string;
+  path: string;
 };
 
-const Navigation = ({ siteName }: Props) => {
+const Navigation = ({ path }: Props) => {
   const { t } = useTranslation();
 
   return (
@@ -22,15 +23,17 @@ const Navigation = ({ siteName }: Props) => {
         justifyContent="space-between"
       >
         <Stack direction={{ base: 'column', sm: 'row' }}>
-          <NavLink href="/projects" path="/projects">
+          <NavLink href="/projects" path={path}>
             {t('projects')}
           </NavLink>
-          <NavLink href="/contact" path="/projects">
+          <NavLink href="/contact" path={path}>
             {t('contact')}
           </NavLink>
         </Stack>
 
-        <Heading size="lg">{siteName}</Heading>
+        <Heading size="lg">
+          <Link href="/">Luis Manuel</Link>
+        </Heading>
 
         <Stack direction={{ base: 'column', sm: 'row' }}>
           <LocaleMenu />

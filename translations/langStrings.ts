@@ -1,5 +1,6 @@
 export const langStrings = {
   en: {
+    home: 'Home',
     developer: 'Developer',
     greeting: "Hello, I'm",
     imA: "I'm a",
@@ -23,6 +24,7 @@ export const langStrings = {
     emailNotSent: 'Oops! Something went wrong.',
   },
   es: {
+    home: 'Inicio',
     developer: 'Desarrollador',
     greeting: 'Hola, soy',
     imA: 'Soy un',

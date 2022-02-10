@@ -12,7 +12,7 @@ const Layout = ({ children, socialLinks }: Props) => {
     <>
       <Meta />
       <main>{children}</main>
-      <Footer socialLinks={socialLinks} />
+      <Footer />
     </>
   );
 };

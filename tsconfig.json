@@ -24,6 +24,9 @@
     "**/*.ts",
     "**/*.tsx"
   ],
+  "files": [
+    "@types/block-content-to-react.d.ts"
+  ],
   "exclude": [
     "node_modules"
   ]

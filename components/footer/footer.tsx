@@ -4,38 +4,38 @@ import ISocialLinks from '../../types/socialLinks';
 import styles from './footer.module.scss';
 
 type Props = {
-  socialLinks: ISocialLinks;
+  socialLinks?: ISocialLinks;
 };
 
-const Footer = ({ socialLinks: { github, linkedIn, twitter } }: Props) => {
+const Footer = ({ socialLinks }: Props) => {
   return (
     <footer>
       <Container>
         <div className={styles.footerContainer}>
-          {github && (
+          {socialLinks?.github && (
             <SocialIcon
               style={{ height: 45, width: 45, marginRight: 20 }}
-              url={github}
+              url={socialLinks.github}
               target="_blank"
               rel="noopener noreferrer"
               network="github"
               bgColor="#FFFFFF"
             />
           )}
-          {linkedIn && (
+          {socialLinks?.linkedIn && (
             <SocialIcon
               style={{ height: 45, width: 45, marginRight: 20 }}
-              url={linkedIn}
+              url={socialLinks.linkedIn}
               target="_blank"
               rel="noopener noreferrer"
               network="linkedin"
               bgColor="#FFFFFF"
             />
           )}
-          {twitter && (
+          {socialLinks?.twitter && (
             <SocialIcon
               style={{ height: 45, width: 45, marginRight: 20 }}
-              url={twitter}
+              url={socialLinks.twitter}
               target="_blank"
               rel="noopener noreferrer"
               network="twitter"
