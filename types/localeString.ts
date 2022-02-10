@@ -1,6 +1,5 @@
 type LocaleStringType = {
-  en: string;
-  es: string;
+  [key: string]: string;
 };
 
 export default LocaleStringType;

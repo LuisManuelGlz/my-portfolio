@@ -1,6 +1,5 @@
 type LocaleBlockType = {
-  en: any;
-  es: any;
+  [key: string]: any;
 };
 
 export default LocaleBlockType;
