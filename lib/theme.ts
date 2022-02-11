@@ -9,7 +9,7 @@ const config: ThemeConfig = {
 const styles = {
   global: (props: GlobalStyleProps) => ({
     body: {
-      bg: mode('whiteAlpha.900', '#1a1a1a')(props),
+      bg: mode('whiteAlpha.900', '#131516')(props),
     },
   }),
 };
