@@ -11,6 +11,7 @@ const Footer = ({ socialLinks }: Props) => {
   return (
     <footer>
       <Container>
+        footer goes here
         <div className={styles.footerContainer}>
           {socialLinks?.github && (
             <SocialIcon

@@ -6,8 +6,8 @@ import Container from '../components/container';
 import CommonLink from '../components/common-link';
 import ISiteSettings from '../types/siteSettings';
 import ISkill from '../types/skill';
-// import { getAllProjects, getSiteSettings, getSkills } from '../lib/api';
-import { getAllProjects, getSiteSettings, getSkills } from '../lib/api.dev';
+// import { getSiteSettings, getSkills } from '../lib/api';
+import { getSiteSettings, getSkills } from '../lib/api.dev';
 import useTranslation from '../hooks/useTranslation';
 import { LanguageContext } from '../contexts/LanguageContext';
 import Section from '../components/section';
@@ -49,7 +49,7 @@ const Home = ({
   return (
     <div>
       <Container>
-        <Section transition={{ delay: 0.6 }}>
+        <Section delay={0.1}>
           <div className={styles.showcaseContainer}>
             <h1 className={styles.showcaseGreeting}>
               {t('greeting')} {shortName}.
@@ -61,7 +61,7 @@ const Home = ({
         </Section>
 
         {/* about */}
-        <Section transition={{ delay: 0.6 }}>
+        <Section delay={0.1}>
           <div className={styles.aboutContainer}>
             <h3 className={styles.aboutHeader}>{t('about')}</h3>
             <BlockContent blocks={about[locale]} serializers={serializers} />

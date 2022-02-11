@@ -1,13 +1,40 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
+import { motion, Variants } from 'framer-motion';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import useTranslation from '../hooks/useTranslation';
 import IProject from '../types/project';
 import styles from '../styles/Home.module.scss';
 import Project from '../components/project';
+import Section from '../components/section';
+import Title from '../components/title';
 // import { getAllProjects } from '../lib/api';
 import { getAllProjects } from '../lib/api.dev';
+
+const headingTextVariants: Variants = {
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+    },
+  },
+  hidden: {
+    y: 10,
+    opacity: 0,
+    transition: {
+      duration: 0.8,
+    },
+  },
+  exit: {
+    y: 10,
+    opacity: 0,
+    transition: {
+      duration: 0.8,
+    },
+  },
+};
 
 type Props = {
   projects: Array<IProject>;
@@ -31,14 +58,16 @@ const Projects = ({ projects }: Props) => {
         <title>{t('projects')} | Luis Manuel</title>
       </Head>
 
-      {/* projects */}
-      <section id="projects">
+      <Section delay={0.1}>
         <div className={styles.projectsContainer}>
-          <h3 className={styles.projectsHeader}>
-            <span>{t('my')}</span>
-            <span>{t('projects')}</span>
-          </h3>
-          <div className={styles.projectsListContainer}>
+          <Title>
+            <motion.span variants={headingTextVariants}>{t('my')}</motion.span>
+            <motion.span variants={headingTextVariants}>
+              {t('projects')}
+            </motion.span>
+          </Title>
+
+          {/* <div className={styles.projectsListContainer}>
             {projects.map((project, index) => (
               <Project
                 key={project._id}
@@ -52,9 +81,9 @@ const Projects = ({ projects }: Props) => {
                 repo={project.repo}
               />
             ))}
-          </div>
+          </div> */}
         </div>
-      </section>
+      </Section>
     </div>
   );
 };
