@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext, ReactNode } from 'react';
 import Head from 'next/head';
 import {
   Image,
   ImageProps,
   SimpleGrid,
   SimpleGridProps,
+  Box,
+  Text,
+  TextProps,
 } from '@chakra-ui/react';
 import {
   motion,
@@ -12,16 +15,17 @@ import {
   AnimatePresence,
   AnimateSharedLayout,
 } from 'framer-motion';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import useTranslation from '../hooks/useTranslation';
 import IProject from '../types/project';
 import styles from '../styles/Home.module.scss';
 import ProjectItem from '../components/project-item';
 import Section from '../components/section';
 import Title from '../components/title';
+import { LanguageContext } from '../contexts/LanguageContext';
 // import { getAllProjects } from '../lib/api';
 import { getAllProjects } from '../lib/api.dev';
+import CommonLink from '../components/common-link';
+import BlockContent from '@sanity/block-content-to-react';
 
 const headingTextVariants: Variants = {
   visible: {
@@ -48,23 +52,36 @@ const headingTextVariants: Variants = {
 };
 
 const MotionImage = motion<Omit<ImageProps, 'transition'>>(Image);
+const MotionText = motion<Omit<TextProps, 'transition'>>(Text);
 
 type Props = {
   projects: Array<IProject>;
 };
 
 const Projects = ({ projects }: Props) => {
+  const { locale } = useContext(LanguageContext);
   const { t } = useTranslation();
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  useEffect(() => {
-    AOS.init({
-      offset: 300,
-      delay: 0,
-      duration: 1000,
-      once: true,
-    });
-  }, []);
+  const link = ({
+    mark: { href },
+    children,
+  }: {
+    mark: { href: string };
+    children: ReactNode;
+  }) => <CommonLink href={href}>{children}</CommonLink>;
+
+  const blockRenderer = ({ children }: { children: ReactNode }) => (
+    <Text
+      noOfLines={[3, 2, 3]}
+      textAlign="center"
+      paddingX={5}
+      marginTop={1}
+      fontSize="sm"
+    >
+      {children}
+    </Text>
+  );
 
   return (
     <AnimateSharedLayout type="crossfade">
@@ -80,19 +97,45 @@ const Projects = ({ projects }: Props) => {
           </motion.span>
         </Title>
 
-        <SimpleGrid columns={[1, 2, 3]} gap={10} mt={10}>
+        <Text as="p" mt={5}>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores
+          porro magnam iusto commodi et consequuntur fuga impedit? Itaque quas
+          ut harum rerum ea, optio amet aliquam fuga eos! Voluptatibus excepturi
+          libero harum architecto enim dignissimos culpa sapiente consequatur
+          cumque quidem aliquid sed, maxime corrupti cupiditate veniam
+          laboriosam nesciunt aliquam velit.
+        </Text>
+
+        <SimpleGrid columns={[1, 2, 3]} gap={10} mt={20}>
           {projects.map((project) => (
-            <MotionImage
-              key={project._id}
-              src={project.image.asset.url}
-              alt={project.title}
-              objectFit="cover"
-              borderRadius="2xl"
-              layoutId={`card-container-${project._id}`}
-              cursor="pointer"
-              onClick={() => setSelectedId(project._id)}
-              // isSelected={project._id === selectedId}
-            />
+            <Box>
+              <MotionImage
+                key={project._id}
+                src={project.image.asset.url}
+                alt={project.title}
+                objectFit="cover"
+                borderRadius="2xl"
+                layoutId={`card-container-${project._id}`}
+                cursor="pointer"
+                onClick={() => setSelectedId(project._id)}
+                // isSelected={project._id === selectedId}
+              />
+              <Text
+                as="h4"
+                marginTop={2}
+                fontWeight="semibold"
+                textAlign="center"
+              >
+                {project.title}
+              </Text>
+              <BlockContent
+                blocks={project.description[locale]}
+                serializers={{
+                  marks: { link },
+                  types: { block: blockRenderer },
+                }}
+              />
+            </Box>
           ))}
         </SimpleGrid>
       </Section>

@@ -5,13 +5,16 @@ import {
   Heading,
   Image,
   Badge,
+  IconButton,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { motion, Variants } from 'framer-motion';
+import { IoClose } from 'react-icons/io5';
 import BlockContent from '@sanity/block-content-to-react';
 import useTranslation from '../hooks/useTranslation';
 import { LanguageContext } from '../contexts/LanguageContext';
 import IProject from '../types/project';
+import styles from './project-footer/project-footer.module.scss';
 import CommonLink from './common-link';
 
 const projectVariants: Variants = {
@@ -47,19 +50,18 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
     children: ReactNode;
   }) => <CommonLink href={href}>{children}</CommonLink>;
 
-  const { title, image, tags, description } = projects.find(
+  const { title, image, tags, description, website, repo } = projects.find(
     (project) => project._id === id
   )!;
 
   return (
-    <>
+    <Box position="fixed" inset={0} padding={{ base: '20px', sm: '40px' }}>
       {/* Overlay */}
       <MotionBox
         initial="hidden"
         animate="visible"
         exit="exit"
         transition={{ duration: 0.2, delay: 0.15 }}
-        style={{ pointerEvents: 'auto' }}
         onClick={handleClick}
         variants={projectVariants}
         position="fixed"
@@ -68,73 +70,98 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
       />
 
       {/* Card */}
-      <Box
+      <MotionBox
+        position="relative"
+        borderRadius="3xl"
+        background={useColorModeValue('whiteAlpha.900', '#1c1c1c')}
+        overflow="hidden" // this prevents that the image container form being displayed
         width="100%"
         height="100%"
-        pointerEvents="none"
-        inset={0}
-        position="fixed"
-        paddingY={{ sm: 0, md: '40px' }}
+        margin="0 auto"
+        maxWidth="700px"
+        layoutId={`card-container-${id}`}
       >
+        {/* Banner container */}
         <MotionBox
           position="relative"
-          borderRadius="3xl"
-          background={useColorModeValue('whiteAlpha.800', '#1c1c1e')}
-          overflow="hidden"
           width="100%"
-          height="100%"
-          margin="0 auto"
-          maxWidth="700px"
-          layoutId={`card-container-${id}`}
+          layoutId={`card-image-container-${id}`}
         >
-          {/* <Box
-            bgGradient="linear(to-b, black, transparent)"
-            // background="linear-gradient(to bottom, black, transparent)"
-            width="100%"
-            height="100%"
-            zIndex={100}
-          /> */}
-          <MotionBox
+          <Image objectFit="cover" src={image.asset.url} alt={title} />
+          <Box
             position="absolute"
-            overflow="hidden"
-            height="420px"
-            width="100vw"
-            layoutId={`card-image-container-${id}`}
-          >
-            <Image src={image.asset.url} alt={title} />
-          </MotionBox>
+            inset={0}
+            bgGradient="linear(to-b, rgba(0, 0, 0, 0.7), transparent)"
+          />
 
+          {/* Header */}
           <MotionBox
             position="absolute"
-            top="30px"
-            left="30px"
+            top={7}
+            left={7}
+            right={7}
+            display="flex"
+            justifyContent="space-between"
             layoutId={`title-container-${id}`}
           >
-            {tags.map((tag, index) => (
-              <Badge key={index} marginRight="7px" colorScheme="gray">
-                {tag}
-              </Badge>
-            ))}
-            <Heading as="h2" size="md" color="whiteAlpha.900">
-              {title}
-            </Heading>
-          </MotionBox>
-
-          <MotionBox
-            paddingX="35px"
-            paddingBottom="35px"
-            paddingTop="460px"
-            width="90vw"
-            animate
-          >
-            <BlockContent
-              blocks={description[locale]}
-              serializers={{ marks: { link } }}
+            <Box>
+              {tags.map((tag, index) => (
+                <Badge
+                  key={index}
+                  marginRight="7px"
+                  variant="solid"
+                  colorScheme="gray"
+                >
+                  {tag}
+                </Badge>
+              ))}
+              <Heading
+                as="h3"
+                marginTop={5}
+                // size="md"
+                fontSize={{ sm: 'lg', md: 'xl' }}
+                color="whiteAlpha.900"
+              >
+                {title}
+              </Heading>
+            </Box>
+            <IconButton
+              aria-label="Close Card"
+              icon={<IoClose />}
+              onClick={handleClick}
             />
           </MotionBox>
+
+          {/* <Box className={styles.projectFooterContainer}>
+            <a
+              className={styles.projectFooterGoToSiteButton}
+              href={website}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t('goToSite')}
+            </a>
+
+            <a
+              className={styles.projectFooterSeeCodeButton}
+              href={repo}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t('seeCode')}
+            </a>
+          </Box> */}
         </MotionBox>
-      </Box>
-    </>
+
+        {/* Description */}
+        <MotionBox padding="35px" animate pointerEvents="all">
+          <BlockContent
+            blocks={description[locale]}
+            serializers={{ marks: { link } }}
+          />
+        </MotionBox>
+      </MotionBox>
+    </Box>
   );
 };
 
