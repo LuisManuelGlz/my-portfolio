@@ -28,7 +28,7 @@ const Title = ({ children, ...rest }: Props) => {
       size="4xl"
       color="primary"
       sx={{
-        '*:nth-child(odd)': {
+        '*:nth-of-type(odd)': {
           display: 'block',
           color: useColorModeValue('gray.700', 'whiteAlpha.900'),
         },
