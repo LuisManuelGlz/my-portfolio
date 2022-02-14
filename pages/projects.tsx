@@ -1,14 +1,6 @@
 import React, { useEffect, useState, useContext, ReactNode } from 'react';
 import Head from 'next/head';
-import {
-  Image,
-  ImageProps,
-  SimpleGrid,
-  SimpleGridProps,
-  Box,
-  Text,
-  TextProps,
-} from '@chakra-ui/react';
+import { SimpleGrid, Box, Text } from '@chakra-ui/react';
 import {
   motion,
   Variants,
@@ -17,15 +9,12 @@ import {
 } from 'framer-motion';
 import useTranslation from '../hooks/useTranslation';
 import IProject from '../types/project';
-import styles from '../styles/Home.module.scss';
 import ProjectItem from '../components/project-item';
 import Section from '../components/section';
 import Title from '../components/title';
-import { LanguageContext } from '../contexts/LanguageContext';
+import ProjectCard from '../components/project-card';
 // import { getAllProjects } from '../lib/api';
 import { getAllProjects } from '../lib/api.dev';
-import CommonLink from '../components/common-link';
-import BlockContent from '@sanity/block-content-to-react';
 
 const headingTextVariants: Variants = {
   visible: {
@@ -51,37 +40,13 @@ const headingTextVariants: Variants = {
   },
 };
 
-const MotionImage = motion<Omit<ImageProps, 'transition'>>(Image);
-const MotionText = motion<Omit<TextProps, 'transition'>>(Text);
-
 type Props = {
   projects: Array<IProject>;
 };
 
 const Projects = ({ projects }: Props) => {
-  const { locale } = useContext(LanguageContext);
   const { t } = useTranslation();
   const [selectedId, setSelectedId] = useState<string | null>(null);
-
-  const link = ({
-    mark: { href },
-    children,
-  }: {
-    mark: { href: string };
-    children: ReactNode;
-  }) => <CommonLink href={href}>{children}</CommonLink>;
-
-  const blockRenderer = ({ children }: { children: ReactNode }) => (
-    <Text
-      noOfLines={[3, 2, 3]}
-      textAlign="center"
-      paddingX={5}
-      marginTop={1}
-      fontSize="sm"
-    >
-      {children}
-    </Text>
-  );
 
   return (
     <AnimateSharedLayout type="crossfade">
@@ -108,34 +73,11 @@ const Projects = ({ projects }: Props) => {
 
         <SimpleGrid columns={[1, 2, 3]} gap={10} mt={20}>
           {projects.map((project) => (
-            <Box>
-              <MotionImage
-                key={project._id}
-                src={project.image.asset.url}
-                alt={project.title}
-                objectFit="cover"
-                borderRadius="2xl"
-                layoutId={`card-container-${project._id}`}
-                cursor="pointer"
-                onClick={() => setSelectedId(project._id)}
-                // isSelected={project._id === selectedId}
-              />
-              <Text
-                as="h4"
-                marginTop={2}
-                fontWeight="semibold"
-                textAlign="center"
-              >
-                {project.title}
-              </Text>
-              <BlockContent
-                blocks={project.description[locale]}
-                serializers={{
-                  marks: { link },
-                  types: { block: blockRenderer },
-                }}
-              />
-            </Box>
+            <ProjectCard
+              key={project._id}
+              {...project}
+              handleClick={() => setSelectedId(project._id)}
+            />
           ))}
         </SimpleGrid>
       </Section>

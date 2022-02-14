@@ -66,6 +66,8 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
         variants={projectVariants}
         position="fixed"
         background="rgba(0, 0, 0, 0.8)"
+        backdropFilter="auto"
+        backdropBlur="5px"
         inset={0}
       />
 
@@ -82,11 +84,7 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
         layoutId={`card-container-${id}`}
       >
         {/* Banner container */}
-        <MotionBox
-          position="relative"
-          width="100%"
-          layoutId={`card-image-container-${id}`}
-        >
+        <MotionBox position="relative" width="100%">
           <Image objectFit="cover" src={image.asset.url} alt={title} />
           <Box
             position="absolute"
@@ -102,7 +100,6 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
             right={7}
             display="flex"
             justifyContent="space-between"
-            layoutId={`title-container-${id}`}
           >
             <Box>
               {tags.map((tag, index) => (
