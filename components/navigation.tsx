@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useRef, MutableRefObject } from 'react';
 import Link from 'next/link';
-import { Box, Container, Heading, Stack } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  ButtonProps,
+  useColorModeValue,
+  useDisclosure,
+  IconButton,
+  Container,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  Heading,
+  Stack,
+} from '@chakra-ui/react';
+import { IoMenu } from 'react-icons/io5';
 import useTranslation from '../hooks/useTranslation';
 import ToggleModeButton from './toggle-mode-button';
 import NavLink from './nav-link';
+import DrawerLink from './drawer-link';
 import LocaleMenu from './locale-menu';
 
 type Props = {
@@ -12,35 +31,88 @@ type Props = {
 
 const Navigation = ({ path }: Props) => {
   const { t } = useTranslation();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef: any = useRef();
 
   return (
-    <Box as="nav" w="100%">
-      <Container
-        display="flex"
-        maxW="container.md"
-        alignItems="center"
-        p={2}
-        justifyContent="space-between"
+    <>
+      <Box as="nav" w="100%">
+        <Container
+          display="flex"
+          maxW="container.md"
+          alignItems="center"
+          p={2}
+          justifyContent="space-between"
+        >
+          <Stack
+            display={{ base: 'none', md: 'block' }}
+            direction={{ base: 'column', sm: 'row' }}
+          >
+            <NavLink href="/projects" path={path}>
+              {t('projects')}
+            </NavLink>
+            <NavLink href="/contact" path={path}>
+              {t('contact')}
+            </NavLink>
+          </Stack>
+
+          <Heading size="lg">
+            <Link href="/">Luis Manuel</Link>
+          </Heading>
+
+          <Stack
+            display={{ base: 'none', md: 'block' }}
+            direction={{ base: 'column', sm: 'row' }}
+          >
+            <LocaleMenu />
+            <ToggleModeButton />
+          </Stack>
+
+          <Box display={{ base: 'inline-block', md: 'none' }}>
+            <IconButton
+              aria-label="Close Card"
+              icon={<IoMenu />}
+              onClick={onOpen}
+            />
+          </Box>
+        </Container>
+      </Box>
+
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        finalFocusRef={btnRef}
       >
-        <Stack direction={{ base: 'column', sm: 'row' }}>
-          <NavLink href="/projects" path={path}>
-            {t('projects')}
-          </NavLink>
-          <NavLink href="/contact" path={path}>
-            {t('contact')}
-          </NavLink>
-        </Stack>
+        <DrawerOverlay
+          background="rgba(0, 0, 0, 0.8)"
+          backdropFilter="auto"
+          backdropBlur="5px"
+        />
+        <DrawerContent background={useColorModeValue('whiteAlpha.900', 'dark')}>
+          <DrawerCloseButton />
+          <DrawerHeader></DrawerHeader>
 
-        <Heading size="lg">
-          <Link href="/">Luis Manuel</Link>
-        </Heading>
+          <DrawerBody>
+            <Stack mt={5}>
+              <DrawerLink href="/projects" path={path} onClick={onClose}>
+                {t('projects')}
+              </DrawerLink>
+              <DrawerLink href="/contact" path={path} onClick={onClose}>
+                {t('contact')}
+              </DrawerLink>
+            </Stack>
+          </DrawerBody>
 
-        <Stack direction={{ base: 'column', sm: 'row' }}>
-          <LocaleMenu />
-          <ToggleModeButton />
-        </Stack>
-      </Container>
-    </Box>
+          <DrawerFooter>
+            <Stack direction="row">
+              <LocaleMenu />
+              <ToggleModeButton />
+            </Stack>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </>
   );
 };
 

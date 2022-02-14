@@ -81,7 +81,7 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
       <MotionBox
         position="relative"
         borderRadius="3xl"
-        background={useColorModeValue('whiteAlpha.900', '#1c1c1c')}
+        background={useColorModeValue('whiteAlpha.900', 'dark')}
         overflow="hidden" // this prevents that the image container form being displayed
         width="100%"
         height={{ base: '90%', sm: '100%' }}
@@ -163,7 +163,7 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
               target="_blank"
               rel="noopener noreferrer"
               borderRadius="lg"
-              background="#1c1c1c"
+              background="dark"
             >
               {t('goToSite')}
             </Button>

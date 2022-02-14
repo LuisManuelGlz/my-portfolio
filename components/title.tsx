@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { Heading, HeadingProps, useColorModeValue } from '@chakra-ui/react';
 import { AnimationProps, motion, Variants } from 'framer-motion';
 
-const headingVariants: Variants = {
+const titleVariants: Variants = {
   visible: {
     transition: {
       when: 'beforeChildren',
@@ -26,6 +26,7 @@ const Title = ({ children, ...rest }: Props) => {
   return (
     <MotionHeading
       size={'4xl'}
+      textAlign={{ base: 'center', sm: 'left' }}
       fontSize={{ base: '5xl', sm: '7xl' }}
       color="primary"
       sx={{
@@ -37,7 +38,7 @@ const Title = ({ children, ...rest }: Props) => {
       initial="hidden"
       animate="visible"
       exit="exit"
-      variants={headingVariants}
+      variants={titleVariants}
       {...rest}
     >
       {children}

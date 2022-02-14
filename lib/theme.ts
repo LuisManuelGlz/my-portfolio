@@ -16,6 +16,7 @@ const styles = {
 
 const colors = {
   primary: '#0099ff',
+  dark: '#1c1c1c',
 };
 
 const theme = extendTheme({
