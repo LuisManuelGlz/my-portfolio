@@ -2,11 +2,13 @@ import React, { ReactNode, useContext } from 'react';
 import {
   Box,
   BoxProps,
+  Text,
   Heading,
   Image,
   Badge,
   IconButton,
   useColorModeValue,
+  Button,
 } from '@chakra-ui/react';
 import { motion, Variants } from 'framer-motion';
 import { IoClose } from 'react-icons/io5';
@@ -50,6 +52,10 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
     children: ReactNode;
   }) => <CommonLink href={href}>{children}</CommonLink>;
 
+  const blockRenderer = ({ children }: { children: ReactNode }) => (
+    <Text fontSize={{ base: 'sm', sm: 'md' }}>{children}</Text>
+  );
+
   const { title, image, tags, description, website, repo } = projects.find(
     (project) => project._id === id
   )!;
@@ -78,7 +84,7 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
         background={useColorModeValue('whiteAlpha.900', '#1c1c1c')}
         overflow="hidden" // this prevents that the image container form being displayed
         width="100%"
-        height="100%"
+        height={{ base: '90%', sm: '100%' }}
         margin="0 auto"
         maxWidth="700px"
         layoutId={`card-container-${id}`}
@@ -104,6 +110,7 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
             <Box>
               {tags.map((tag, index) => (
                 <Badge
+                  fontSize={{ base: 'x-small', sm: 'xs' }}
                   key={index}
                   marginRight="7px"
                   variant="solid"
@@ -123,39 +130,83 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
               </Heading>
             </Box>
             <IconButton
+              background="whiteAlpha.200"
+              color="whiteAlpha.900"
               aria-label="Close Card"
               icon={<IoClose />}
               onClick={handleClick}
             />
           </MotionBox>
 
-          {/* <Box className={styles.projectFooterContainer}>
-            <a
-              className={styles.projectFooterGoToSiteButton}
+          <MotionBox
+            position="absolute"
+            right={7}
+            bottom={7}
+            display={{ base: 'none', sm: 'flex' }}
+            gap={5}
+            mt={5}
+          >
+            <Button
+              as="a"
               href={website}
               target="_blank"
               rel="noopener noreferrer"
+              borderRadius="lg"
+              background="primary"
             >
               {t('goToSite')}
-            </a>
+            </Button>
 
-            <a
-              className={styles.projectFooterSeeCodeButton}
+            <Button
+              as="a"
               href={repo}
               target="_blank"
               rel="noopener noreferrer"
+              borderRadius="lg"
+              background="#1c1c1c"
             >
-              {t('seeCode')}
-            </a>
-          </Box> */}
+              {t('goToSite')}
+            </Button>
+          </MotionBox>
         </MotionBox>
 
         {/* Description */}
-        <MotionBox padding="35px" animate pointerEvents="all">
+        <MotionBox paddingY="20px" paddingX="25px" animate pointerEvents="all">
           <BlockContent
             blocks={description[locale]}
-            serializers={{ marks: { link } }}
+            serializers={{ marks: { link }, types: { block: blockRenderer } }}
           />
+
+          <Box
+            display={{ base: 'flex', sm: 'none' }}
+            flexDirection="column"
+            gap={5}
+            mt={5}
+          >
+            <Button
+              as="a"
+              width="full"
+              href={website}
+              target="_blank"
+              rel="noopener noreferrer"
+              borderRadius="lg"
+              background="primary"
+            >
+              {t('goToSite')}
+            </Button>
+
+            <Button
+              as="a"
+              width="full"
+              href={repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              borderRadius="lg"
+              variant="ghost"
+            >
+              {t('goToSite')}
+            </Button>
+          </Box>
         </MotionBox>
       </MotionBox>
     </Box>
