@@ -25,7 +25,8 @@ type Props = {
 const Title = ({ children, ...rest }: Props) => {
   return (
     <MotionHeading
-      size="4xl"
+      size={'4xl'}
+      fontSize={{ base: '5xl', sm: '7xl' }}
       color="primary"
       sx={{
         '*:nth-of-type(odd)': {
