@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext, ReactNode } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
-import { SimpleGrid, Box, Text } from '@chakra-ui/react';
+import { SimpleGrid } from '@chakra-ui/react';
 import {
   motion,
   Variants,
@@ -12,6 +12,7 @@ import IProject from '../types/project';
 import ProjectItem from '../components/project-item';
 import Section from '../components/section';
 import Title from '../components/title';
+import Paragraph from '../components/paragraph';
 import ProjectCard from '../components/project-card';
 // import { getAllProjects } from '../lib/api';
 import { getAllProjects } from '../lib/api.dev';
@@ -62,14 +63,14 @@ const Projects = ({ projects }: Props) => {
           </motion.span>
         </Title>
 
-        <Text as="p" mt={5}>
+        <Paragraph delay={0.4}>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores
           porro magnam iusto commodi et consequuntur fuga impedit? Itaque quas
           ut harum rerum ea, optio amet aliquam fuga eos! Voluptatibus excepturi
           libero harum architecto enim dignissimos culpa sapiente consequatur
           cumque quidem aliquid sed, maxime corrupti cupiditate veniam
           laboriosam nesciunt aliquam velit.
-        </Text>
+        </Paragraph>
 
         <SimpleGrid columns={[1, 2, 3]} gap={10} mt={20}>
           {projects.map((project) => (
