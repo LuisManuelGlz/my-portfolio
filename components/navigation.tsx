@@ -89,7 +89,13 @@ const Navigation = ({ path }: Props) => {
           backdropFilter="auto"
           backdropBlur="5px"
         />
-        <DrawerContent background={useColorModeValue('whiteAlpha.900', 'dark')}>
+        <DrawerContent
+          background={useColorModeValue('whiteAlpha.900', 'dark.500')}
+          bgGradient={useColorModeValue(
+            'linear(to-b, transparent, blue.200)',
+            'linear(to-b, transparent, rgba(0, 0, 0, 0.5))'
+          )}
+        >
           <DrawerCloseButton />
           <DrawerHeader></DrawerHeader>
 
