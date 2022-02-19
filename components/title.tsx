@@ -28,7 +28,7 @@ const Title = ({ children, ...rest }: Props) => {
       size={'4xl'}
       textAlign={{ base: 'center', sm: 'left' }}
       fontSize={{ base: '5xl', sm: '7xl' }}
-      color="primary"
+      color="primary.500"
       sx={{
         '*:nth-of-type(odd)': {
           display: 'block',

@@ -15,12 +15,8 @@ const NavLink = ({ href, path, children, ...rest }: Props) => {
       <Button
         as="a"
         p={2}
-        bg={isActive ? 'primary' : undefined}
-        color={
-          isActive
-            ? 'whiteAlpha.900'
-            : useColorModeValue('gray.700', 'whiteAlpha.900')
-        }
+        colorScheme="primary"
+        variant={isActive ? 'solid' : 'ghost'}
         {...rest}
       >
         {children}

@@ -73,9 +73,10 @@ const Projects = ({ projects }: Props) => {
         </Paragraph>
 
         <SimpleGrid columns={[1, 2, 3]} gap={10} mt={20}>
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <ProjectCard
               key={project._id}
+              index={index}
               {...project}
               handleClick={() => setSelectedId(project._id)}
             />

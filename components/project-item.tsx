@@ -16,7 +16,6 @@ import BlockContent from '@sanity/block-content-to-react';
 import useTranslation from '../hooks/useTranslation';
 import { LanguageContext } from '../contexts/LanguageContext';
 import IProject from '../types/project';
-import styles from './project-footer/project-footer.module.scss';
 import CommonLink from './common-link';
 
 const projectVariants: Variants = {
@@ -53,7 +52,9 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
   }) => <CommonLink href={href}>{children}</CommonLink>;
 
   const blockRenderer = ({ children }: { children: ReactNode }) => (
-    <Text fontSize={{ base: 'sm', sm: 'md' }}>{children}</Text>
+    <Text marginTop={3} fontSize={{ base: 'sm', sm: 'md' }}>
+      {children}
+    </Text>
   );
 
   const { title, image, tags, description, website, repo } = projects.find(
@@ -61,7 +62,7 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
   )!;
 
   return (
-    <Box position="fixed" inset={0} padding={{ base: '20px', sm: '40px' }}>
+    <Box position="fixed" inset={0} padding={{ base: '20px', sm: '25px' }}>
       {/* Overlay */}
       <MotionBox
         initial="hidden"
@@ -81,10 +82,10 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
       <MotionBox
         position="relative"
         borderRadius="3xl"
-        background={useColorModeValue('whiteAlpha.900', 'dark')}
+        background={useColorModeValue('whiteAlpha.900', 'dark.500')}
         overflow="hidden" // this prevents that the image container form being displayed
         width="100%"
-        height={{ base: '90%', sm: '100%' }}
+        height="100%"
         margin="0 auto"
         maxWidth="700px"
         layoutId={`card-container-${id}`}
@@ -108,20 +109,8 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
             justifyContent="space-between"
           >
             <Box>
-              {tags.map((tag, index) => (
-                <Badge
-                  fontSize={{ base: 'x-small', sm: 'xs' }}
-                  key={index}
-                  marginRight="7px"
-                  variant="solid"
-                  colorScheme="gray"
-                >
-                  {tag}
-                </Badge>
-              ))}
               <Heading
                 as="h3"
-                marginTop={5}
                 // size="md"
                 fontSize={{ sm: 'lg', md: 'xl' }}
                 color="whiteAlpha.900"
@@ -130,8 +119,7 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
               </Heading>
             </Box>
             <IconButton
-              background="whiteAlpha.200"
-              color="whiteAlpha.900"
+              colorScheme="gray"
               aria-label="Close Card"
               icon={<IoClose />}
               onClick={handleClick}
@@ -152,7 +140,8 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
               target="_blank"
               rel="noopener noreferrer"
               borderRadius="lg"
-              background="primary"
+              colorScheme="primary"
+              color="whiteAlpha.900"
             >
               {t('goToSite')}
             </Button>
@@ -163,15 +152,28 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
               target="_blank"
               rel="noopener noreferrer"
               borderRadius="lg"
-              background="dark"
+              colorScheme="dark"
+              color="whiteAlpha.900"
             >
-              {t('goToSite')}
+              {t('seeCode')}
             </Button>
           </MotionBox>
         </MotionBox>
 
         {/* Description */}
         <MotionBox paddingY="20px" paddingX="25px" animate pointerEvents="all">
+          {tags.map((tag, index) => (
+            <Badge
+              fontSize={{ base: 'x-small', sm: 'xs' }}
+              key={index}
+              marginRight="7px"
+              variant="solid"
+              colorScheme="gray"
+            >
+              {tag}
+            </Badge>
+          ))}
+
           <BlockContent
             blocks={description[locale]}
             serializers={{ marks: { link }, types: { block: blockRenderer } }}
@@ -190,7 +192,8 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
               target="_blank"
               rel="noopener noreferrer"
               borderRadius="lg"
-              background="primary"
+              colorScheme="primary"
+              color="whiteAlpha.900"
             >
               {t('goToSite')}
             </Button>
@@ -204,7 +207,7 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
               borderRadius="lg"
               variant="ghost"
             >
-              {t('goToSite')}
+              {t('seeCode')}
             </Button>
           </Box>
         </MotionBox>
