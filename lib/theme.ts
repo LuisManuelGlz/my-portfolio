@@ -41,10 +41,22 @@ const colors = {
   },
 };
 
+const components = {
+  Link: {
+    baseStyle: {
+      color: 'primary.500',
+      _hover: {
+        textDecoration: 'none',
+      },
+    },
+  },
+};
+
 const theme = extendTheme({
   config,
   styles,
   colors,
+  components,
 });
 
 export default theme;

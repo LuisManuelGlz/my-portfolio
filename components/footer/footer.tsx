@@ -1,5 +1,5 @@
+import { Container } from '@chakra-ui/react';
 import { SocialIcon } from 'react-social-icons';
-import Container from '../container';
 import ISocialLinks from '../../types/socialLinks';
 import styles from './footer.module.scss';
 
@@ -10,7 +10,7 @@ type Props = {
 const Footer = ({ socialLinks }: Props) => {
   return (
     <footer>
-      <Container>
+      <Container maxW="container.lg">
         footer goes here
         <div className={styles.footerContainer}>
           {socialLinks?.github && (

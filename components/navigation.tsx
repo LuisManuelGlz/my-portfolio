@@ -39,7 +39,7 @@ const Navigation = ({ path }: Props) => {
       <Box as="nav" w="100%">
         <Container
           display="flex"
-          maxW="container.md"
+          maxW="container.lg"
           alignItems="center"
           p={2}
           justifyContent="space-between"

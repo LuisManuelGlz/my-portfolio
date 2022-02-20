@@ -9,6 +9,7 @@ import {
   IconButton,
   useColorModeValue,
   Button,
+  Link,
 } from '@chakra-ui/react';
 import { motion, Variants } from 'framer-motion';
 import { IoClose } from 'react-icons/io5';
@@ -16,7 +17,6 @@ import BlockContent from '@sanity/block-content-to-react';
 import useTranslation from '../hooks/useTranslation';
 import { LanguageContext } from '../contexts/LanguageContext';
 import IProject from '../types/project';
-import CommonLink from './common-link';
 
 const projectVariants: Variants = {
   visible: {
@@ -49,7 +49,11 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
   }: {
     mark: { href: string };
     children: ReactNode;
-  }) => <CommonLink href={href}>{children}</CommonLink>;
+  }) => (
+    <Link href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </Link>
+  );
 
   const blockRenderer = ({ children }: { children: ReactNode }) => (
     <Text marginTop={3} fontSize={{ base: 'sm', sm: 'md' }}>

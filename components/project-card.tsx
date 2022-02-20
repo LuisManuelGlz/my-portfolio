@@ -1,10 +1,9 @@
 import React, { ReactNode, useContext } from 'react';
-import { Box, BoxProps, Image, ImageProps, Text } from '@chakra-ui/react';
+import { Box, BoxProps, Image, ImageProps, Text, Link } from '@chakra-ui/react';
 import { motion, Variants } from 'framer-motion';
 import BlockContent from '@sanity/block-content-to-react';
 import ImageType from '../types/image';
 import LocaleBlockType from '../types/localeBlock';
-import CommonLink from './common-link';
 import { LanguageContext } from '../contexts/LanguageContext';
 import useTranslation from '../hooks/useTranslation';
 
@@ -56,7 +55,11 @@ const ProjectCard = ({
   }: {
     mark: { href: string };
     children: ReactNode;
-  }) => <CommonLink href={href}>{children}</CommonLink>;
+  }) => (
+    <Link href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </Link>
+  );
 
   const blockRenderer = ({ children }: { children: ReactNode }) => (
     <Text
