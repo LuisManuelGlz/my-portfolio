@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { GetStaticProps } from 'next';
 import { Router } from 'next/router';
 import Head from 'next/head';
 import { Box, Container } from '@chakra-ui/react';
@@ -32,7 +31,7 @@ const main = ({ children, router }: Props) => {
 
       <Container maxW="container.lg">{children}</Container>
 
-      <Footer socialLinks={undefined} />
+      <Footer />
     </Box>
   );
 };
