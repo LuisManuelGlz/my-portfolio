@@ -14,6 +14,11 @@ const styles = {
   }),
 };
 
+const fonts = {
+  heading: 'Open Sans',
+  body: 'Montserrat',
+};
+
 const colors = {
   primary: {
     50: '#80ccff',
@@ -57,6 +62,7 @@ const theme = extendTheme({
   styles,
   colors,
   components,
+  fonts,
 });
 
 export default theme;

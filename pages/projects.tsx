@@ -67,9 +67,7 @@ const Projects = ({ projects }: Props) => {
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores
           porro magnam iusto commodi et consequuntur fuga impedit? Itaque quas
           ut harum rerum ea, optio amet aliquam fuga eos! Voluptatibus excepturi
-          libero harum architecto enim dignissimos culpa sapiente consequatur
-          cumque quidem aliquid sed, maxime corrupti cupiditate veniam
-          laboriosam nesciunt aliquam velit.
+          libero harum architecto.
         </Paragraph>
 
         <SimpleGrid columns={[1, 2]} gap={10} mt={20}>

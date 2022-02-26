@@ -11,6 +11,8 @@
     "@chakra-ui/react": "^1.8.3",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@fontsource/montserrat": "^4.5.5",
+    "@fontsource/open-sans": "^4.5.5",
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^3.0.3",
     "emailjs-com": "^3.2.0",

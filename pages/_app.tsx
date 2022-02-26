@@ -1,7 +1,9 @@
+import '@fontsource/open-sans';
+import '@fontsource/montserrat';
+
 import type { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
 import { AnimatePresence } from 'framer-motion';
-import '../styles/globals.css';
 import Layout from '../layout/main';
 
 import { LanguageProvider } from '../contexts/LanguageContext';
