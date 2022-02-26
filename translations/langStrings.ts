@@ -1,4 +1,6 @@
-export const langStrings = {
+import LocaleBlockType from '../types/localeBlock';
+
+export const langStrings: LocaleBlockType = {
   en: {
     home: 'Home',
     developer: 'Developer',
