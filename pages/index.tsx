@@ -8,7 +8,6 @@ import {
   Heading,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { ToastContainer } from 'react-toastify';
 import ISiteSettings from '../types/siteSettings';
 import ISkill from '../types/skill';
 import { getSiteSettings, getSkills } from '../lib/api';
@@ -18,8 +17,6 @@ import { LanguageContext } from '../contexts/LanguageContext';
 import Section from '../components/section';
 import Title from '../components/title';
 import MarkLink from '../components/mark-link';
-
-import 'react-toastify/dist/ReactToastify.css';
 
 type Props = {
   siteSettings: ISiteSettings;
@@ -106,13 +103,6 @@ const Home = ({
           </HStack>
         </Box>
       </Section>
-
-      <ToastContainer
-        position="top-center"
-        hideProgressBar
-        closeButton={false}
-        pauseOnHover={false}
-      />
     </Box>
   );
 };

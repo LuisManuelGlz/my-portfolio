@@ -13,6 +13,7 @@ import {
 import ReCAPTCHA from 'react-google-recaptcha';
 import { toast } from 'react-toastify';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { IoSend } from 'react-icons/io5';
 import { sendEmail } from '../lib/api';
 import useTranslation from '../hooks/useTranslation';
 import config from '../config';
@@ -31,18 +32,22 @@ const ContactForm = () => {
   const [isReCaptchaVerified, setIsReCaptchaVerified] = useState<
     boolean | null
   >(null);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
   const { locale } = useContext(LanguageContext);
   const {
     register,
     reset,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<Inputs>();
 
   const recaptchaRef = useRef() as MutableRefObject<ReCAPTCHA>;
 
   const onSubmit: SubmitHandler<Inputs> = ({ name, email, message }) => {
     if (isReCaptchaVerified) {
+      setIsSubmitting(true);
+
       const templateParams = {
         from_name: name,
         from_email: email,
@@ -52,7 +57,7 @@ const ContactForm = () => {
 
       sendEmail(templateParams)
         .then(() => {
-          toast.dark(t('emailSent'));
+          toast.success(t('emailSent'));
           reset();
           recaptchaRef.current.reset();
           setReCaptchaValue(null);
@@ -60,7 +65,8 @@ const ContactForm = () => {
         })
         .catch(() => {
           toast.error(t('emailNotSent'));
-        });
+        })
+        .finally(() => setIsSubmitting(true));
     } else {
       setIsReCaptchaVerified(false);
     }
@@ -162,6 +168,7 @@ const ContactForm = () => {
       </GridItem>
       <GridItem colSpan={2}>
         <Button
+          leftIcon={<IoSend />}
           colorScheme="primary"
           width="full"
           isLoading={isSubmitting}

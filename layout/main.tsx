@@ -2,9 +2,12 @@ import React, { ReactNode } from 'react';
 import { Router } from 'next/router';
 import Head from 'next/head';
 import { Box, Container } from '@chakra-ui/react';
+import { ToastContainer } from 'react-toastify';
 import useTranslation from '../hooks/useTranslation';
 import Navigation from '../components/navigation';
 import Footer from '../components/footer';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 type Props = {
   children: ReactNode;
@@ -30,6 +33,13 @@ const main = ({ children, router }: Props) => {
       <Container maxW="container.md">{children}</Container>
 
       <Footer />
+
+      <ToastContainer
+        position="top-center"
+        hideProgressBar
+        closeButton={false}
+        pauseOnHover={false}
+      />
     </Box>
   );
 };
