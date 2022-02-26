@@ -1,6 +1,6 @@
 import { useContext, ReactNode } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import { Text, Link } from '@chakra-ui/react';
+import { Text, Box, HStack, Image } from '@chakra-ui/react';
 import { ToastContainer } from 'react-toastify';
 import ISiteSettings from '../types/siteSettings';
 import ISkill from '../types/skill';
@@ -9,6 +9,8 @@ import { getSiteSettings, getSkills } from '../lib/api.dev';
 import useTranslation from '../hooks/useTranslation';
 import { LanguageContext } from '../contexts/LanguageContext';
 import Section from '../components/section';
+import Title from '../components/title';
+import MarkLink from '../components/mark-link';
 import styles from '../styles/Home.module.scss';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,27 +27,19 @@ const Home = ({
   const { locale } = useContext(LanguageContext);
   const { t } = useTranslation();
 
-  const link = ({
-    mark: { href },
-    children,
-  }: {
-    mark: { href: string };
-    children: ReactNode;
-  }) => (
-    <Link href={href} target="_blank" rel="noopener noreferrer">
-      {children}
-    </Link>
-  );
-
   const serializers = {
     types: {
       block: ({ children }: { children: ReactNode }) => (
-        <Text as="p" className={styles.aboutBlockContent}>
+        <Text
+          as="p"
+          fontSize={{ base: '18px', sm: '24px' }}
+          textAlign={{ base: 'center', sm: 'start' }}
+        >
           {children}
         </Text>
       ),
     },
-    marks: { link },
+    marks: { link: MarkLink },
   };
 
   return (
@@ -63,25 +57,30 @@ const Home = ({
 
       {/* about */}
       <Section delay={0.1}>
-        <div className={styles.aboutContainer}>
-          <h3 className={styles.aboutHeader}>{t('about')}</h3>
-          <BlockContent blocks={about[locale]} serializers={serializers} />
-          <div className={styles.aboutSkillsListContainer}>
-            {skills.map(({ _id, name, logo, backgroundColor: { hex } }) => (
-              <div
-                key={_id}
-                style={{ backgroundColor: hex }}
-                className={styles.aboutSkill}
-              >
-                <img
-                  className={styles.aboutSkillImage}
-                  src={logo.asset.url}
-                  alt={`${name} logo`}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+        <Title>{t('about')}</Title>
+        <BlockContent blocks={about[locale]} serializers={serializers} />
+        <HStack wrap="wrap" marginTop={8} justifyContent="center">
+          {skills.map(({ _id, name, logo, backgroundColor: { hex } }) => (
+            <Box
+              key={_id}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              width="90px"
+              height="90px"
+              borderRadius="full"
+              background={hex}
+              overflow="hidden"
+            >
+              <Image
+                src={logo.asset.url}
+                alt={`${name} logo`}
+                width="75px"
+                objectFit="cover"
+              />
+            </Box>
+          ))}
+        </HStack>
       </Section>
 
       <ToastContainer

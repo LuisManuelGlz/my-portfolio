@@ -9,7 +9,6 @@ import {
   IconButton,
   useColorModeValue,
   Button,
-  Link,
 } from '@chakra-ui/react';
 import { motion, Variants } from 'framer-motion';
 import { IoClose } from 'react-icons/io5';
@@ -17,6 +16,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import useTranslation from '../hooks/useTranslation';
 import { LanguageContext } from '../contexts/LanguageContext';
 import IProject from '../types/project';
+import MarkLink from '../components/mark-link';
 
 const projectVariants: Variants = {
   visible: {
@@ -42,18 +42,6 @@ const MotionBox = motion<Omit<BoxProps, 'transition'>>(Box);
 const ProjectItem = ({ id, handleClick, projects }: Props) => {
   const { locale } = useContext(LanguageContext);
   const { t } = useTranslation();
-
-  const link = ({
-    mark: { href },
-    children,
-  }: {
-    mark: { href: string };
-    children: ReactNode;
-  }) => (
-    <Link href={href} target="_blank" rel="noopener noreferrer">
-      {children}
-    </Link>
-  );
 
   const blockRenderer = ({ children }: { children: ReactNode }) => (
     <Text marginTop={3} fontSize={{ base: 'sm', sm: 'md' }}>
@@ -180,7 +168,10 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
 
           <BlockContent
             blocks={description[locale]}
-            serializers={{ marks: { link }, types: { block: blockRenderer } }}
+            serializers={{
+              marks: { link: MarkLink },
+              types: { block: blockRenderer },
+            }}
           />
 
           <Box
