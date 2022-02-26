@@ -13,10 +13,16 @@ const NavLink = ({ href, path, children, ...rest }: Props) => {
   return (
     <NextLink href={href} passHref>
       <Button
-        as="a"
+        as="button"
         p={2}
-        colorScheme="primary"
-        variant={isActive ? 'solid' : 'ghost'}
+        colorScheme={isActive ? 'primary' : useColorModeValue('dark', 'gray')}
+        _hover={{
+          bg: useColorModeValue('gray.100', 'dark.400'),
+        }}
+        _focusWithin={{
+          bg: useColorModeValue('gray.100', 'dark.400'),
+        }}
+        variant="ghost"
         {...rest}
       >
         {children}

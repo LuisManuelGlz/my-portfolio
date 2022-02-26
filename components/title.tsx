@@ -26,8 +26,9 @@ const Title = ({ children, ...rest }: Props) => {
   return (
     <MotionHeading
       size={'4xl'}
-      textAlign={{ base: 'center', sm: 'left' }}
+      textAlign="center"
       fontSize={{ base: '5xl', sm: '7xl' }}
+      marginBottom={8}
       color="primary.500"
       sx={{
         '*:nth-of-type(odd)': {

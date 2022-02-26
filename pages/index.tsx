@@ -1,6 +1,13 @@
 import { useContext, ReactNode } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import { Text, Box, HStack, Image } from '@chakra-ui/react';
+import {
+  Text,
+  Box,
+  HStack,
+  Image,
+  Heading,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import { ToastContainer } from 'react-toastify';
 import ISiteSettings from '../types/siteSettings';
 import ISkill from '../types/skill';
@@ -11,7 +18,6 @@ import { LanguageContext } from '../contexts/LanguageContext';
 import Section from '../components/section';
 import Title from '../components/title';
 import MarkLink from '../components/mark-link';
-import styles from '../styles/Home.module.scss';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -30,11 +36,7 @@ const Home = ({
   const serializers = {
     types: {
       block: ({ children }: { children: ReactNode }) => (
-        <Text
-          as="p"
-          fontSize={{ base: '18px', sm: '24px' }}
-          textAlign={{ base: 'center', sm: 'start' }}
-        >
+        <Text as="p" fontSize={{ base: '18px', sm: '24px' }} textAlign="center">
           {children}
         </Text>
       ),
@@ -43,44 +45,66 @@ const Home = ({
   };
 
   return (
-    <div>
+    <Box>
       <Section delay={0.1}>
-        <div className={styles.showcaseContainer}>
-          <h1 className={styles.showcaseGreeting}>
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          height="90vh"
+        >
+          <Heading
+            as="h1"
+            textAlign="center"
+            color="primary.500"
+            marginBottom="24px"
+            fontSize={{ base: '50px', sm: '70px', md: '90px' }}
+          >
             {t('greeting')} {shortName}.
-          </h1>
-          <h2 className={styles.showcaseRole}>
+          </Heading>
+          <Text
+            color={useColorModeValue('dark', 'gray.100')}
+            fontSize={{ base: 'lg', sm: '2xl', md: '3xl' }}
+          >
             {t('imA')} {role[locale]}
-          </h2>
-        </div>
+          </Text>
+        </Box>
       </Section>
 
       {/* about */}
       <Section delay={0.1}>
-        <Title>{t('about')}</Title>
-        <BlockContent blocks={about[locale]} serializers={serializers} />
-        <HStack wrap="wrap" marginTop={8} justifyContent="center">
-          {skills.map(({ _id, name, logo, backgroundColor: { hex } }) => (
-            <Box
-              key={_id}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              width="90px"
-              height="90px"
-              borderRadius="full"
-              background={hex}
-              overflow="hidden"
-            >
-              <Image
-                src={logo.asset.url}
-                alt={`${name} logo`}
-                width="75px"
-                objectFit="cover"
-              />
-            </Box>
-          ))}
-        </HStack>
+        <Box
+          textAlign="center"
+          margin="auto"
+          width={{ sm: '90%', md: '80%' }}
+          marginBottom={14}
+        >
+          <Title>{t('about')}</Title>
+          <BlockContent blocks={about[locale]} serializers={serializers} />
+          <HStack wrap="wrap" marginTop={8} justifyContent="center">
+            {skills.map(({ _id, name, logo, backgroundColor: { hex } }) => (
+              <Box
+                key={_id}
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                width="90px"
+                height="90px"
+                borderRadius="full"
+                background={hex}
+                overflow="hidden"
+              >
+                <Image
+                  src={logo.asset.url}
+                  alt={`${name} logo`}
+                  width="75px"
+                  objectFit="cover"
+                />
+              </Box>
+            ))}
+          </HStack>
+        </Box>
       </Section>
 
       <ToastContainer
@@ -89,7 +113,7 @@ const Home = ({
         closeButton={false}
         pauseOnHover={false}
       />
-    </div>
+    </Box>
   );
 };
 

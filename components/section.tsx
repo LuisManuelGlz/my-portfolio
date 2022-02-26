@@ -17,6 +17,7 @@ const Section = ({ children, delay = 0, ...rest }: Props) => {
       whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true }}
       exit={{ y: 10, opacity: 0 }}
+      paddingY={10}
       {...rest}
     >
       {children}

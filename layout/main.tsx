@@ -29,7 +29,7 @@ const main = ({ children, router }: Props) => {
 
       <Navigation path={router.asPath} />
 
-      <Container maxW="container.lg">{children}</Container>
+      <Container maxW="container.md">{children}</Container>
 
       <Footer />
     </Box>

@@ -29,8 +29,8 @@ const Paragraph = ({ children, delay = 0 }: Props) => {
     <MotionText
       as="p"
       mt={5}
-      textAlign={{ base: 'center', sm: 'left' }}
-      fontSize={{ base: 'sm', sm: 'md' }}
+      textAlign="center"
+      fontSize={{ base: 'md', sm: 'lg' }}
       initial="hidden"
       animate="visible"
       exit="exit"
