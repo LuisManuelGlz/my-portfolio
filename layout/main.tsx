@@ -5,8 +5,6 @@ import { Box, Container } from '@chakra-ui/react';
 import useTranslation from '../hooks/useTranslation';
 import Navigation from '../components/navigation';
 import Footer from '../components/footer';
-import ISocialLinks from '../types/socialLinks';
-import { getSiteSettings } from '../lib/api.dev';
 
 type Props = {
   children: ReactNode;

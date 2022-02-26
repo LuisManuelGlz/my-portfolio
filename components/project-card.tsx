@@ -4,6 +4,7 @@ import { motion, Variants } from 'framer-motion';
 import BlockContent from '@sanity/block-content-to-react';
 import ImageType from '../types/image';
 import LocaleBlockType from '../types/localeBlock';
+import TagType from '../types/tag';
 import { LanguageContext } from '../contexts/LanguageContext';
 import useTranslation from '../hooks/useTranslation';
 import MarkLink from '../components/mark-link';
@@ -33,7 +34,7 @@ type Props = {
   index: number;
   title: string;
   description: LocaleBlockType;
-  tags: Array<string>;
+  tags: Array<TagType>;
   handleClick: () => void;
   image: ImageType;
 };

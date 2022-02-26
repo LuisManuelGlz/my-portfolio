@@ -14,8 +14,8 @@ import Section from '../components/section';
 import Title from '../components/title';
 import Paragraph from '../components/paragraph';
 import ProjectCard from '../components/project-card';
-// import { getAllProjects } from '../lib/api';
-import { getAllProjects } from '../lib/api.dev';
+import { getAllProjects } from '../lib/api';
+// import { getAllProjects } from '../lib/api.dev';
 
 const headingTextVariants: Variants = {
   visible: {
@@ -63,12 +63,12 @@ const Projects = ({ projects }: Props) => {
           </motion.span>
         </Title>
 
-        <Paragraph delay={0.4}>
+        {/* <Paragraph delay={0.4}>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores
           porro magnam iusto commodi et consequuntur fuga impedit? Itaque quas
           ut harum rerum ea, optio amet aliquam fuga eos! Voluptatibus excepturi
           libero harum architecto.
-        </Paragraph>
+        </Paragraph> */}
 
         <SimpleGrid columns={[1, 2]} gap={10} mt={20}>
           {projects.map((project, index) => (

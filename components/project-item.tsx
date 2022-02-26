@@ -15,7 +15,7 @@ import { IoClose } from 'react-icons/io5';
 import BlockContent from '@sanity/block-content-to-react';
 import useTranslation from '../hooks/useTranslation';
 import { LanguageContext } from '../contexts/LanguageContext';
-import IProject from '../types/project';
+import Project from '../types/project';
 import MarkLink from '../components/mark-link';
 
 const projectVariants: Variants = {
@@ -34,7 +34,7 @@ const projectVariants: Variants = {
 type Props = {
   id: string;
   handleClick: () => void;
-  projects: Array<IProject>;
+  projects: Array<Project>;
 };
 
 const MotionBox = motion<Omit<BoxProps, 'transition'>>(Box);
@@ -54,7 +54,12 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
   )!;
 
   return (
-    <Box position="fixed" inset={0} padding={{ base: '20px', sm: '25px' }}>
+    <Box
+      position="fixed"
+      inset={0}
+      padding={{ base: '20px', sm: '25px' }}
+      zIndex={10}
+    >
       {/* Overlay */}
       <MotionBox
         initial="hidden"
@@ -156,13 +161,18 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
         <MotionBox paddingY="20px" paddingX="25px" animate pointerEvents="all">
           {tags.map((tag, index) => (
             <Badge
+              as="a"
+              href={tag.site}
+              target="_blank"
+              rel="noopener noreferrer"
               fontSize={{ base: 'x-small', sm: 'xs' }}
               key={index}
               marginRight="7px"
               variant="solid"
-              colorScheme="gray"
+              backgroundColor={tag.backgroundColor.hex}
+              color="whiteAlpha.900"
             >
-              {tag}
+              {tag.name}
             </Badge>
           ))}
 

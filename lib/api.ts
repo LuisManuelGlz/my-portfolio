@@ -62,9 +62,6 @@ export const getSiteSettings = async () => {
         "en": en[0],
         "es": es[0]
       },
-      github,
-      linkedIn,
-      twitter,
       location
     }`
   );

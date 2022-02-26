@@ -11,8 +11,8 @@ import {
 import { ToastContainer } from 'react-toastify';
 import ISiteSettings from '../types/siteSettings';
 import ISkill from '../types/skill';
-// import { getSiteSettings, getSkills } from '../lib/api';
-import { getSiteSettings, getSkills } from '../lib/api.dev';
+import { getSiteSettings, getSkills } from '../lib/api';
+// import { getSiteSettings, getSkills } from '../lib/api.dev';
 import useTranslation from '../hooks/useTranslation';
 import { LanguageContext } from '../contexts/LanguageContext';
 import Section from '../components/section';
@@ -27,7 +27,7 @@ type Props = {
 };
 
 const Home = ({
-  siteSettings: { siteName, shortName, role, about, ...socialLinks },
+  siteSettings: { siteName, shortName, role, about },
   skills,
 }: Props) => {
   const { locale } = useContext(LanguageContext);

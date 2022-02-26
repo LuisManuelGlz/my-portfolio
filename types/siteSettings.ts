@@ -8,9 +8,6 @@ type SiteSettingsType = {
   role: LocaleStringType;
   about: LocaleBlockType;
   whatIDo: LocaleBlockType;
-  github: string;
-  linkedIn: string;
-  twitter: string;
   location: string;
 };
 
