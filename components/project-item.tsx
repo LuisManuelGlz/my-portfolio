@@ -159,20 +159,20 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
 
         {/* Description */}
         <MotionBox paddingY="20px" paddingX="25px" animate pointerEvents="all">
-          {tags.map((tag, index) => (
+          {tags.map(({ _id, name, site, backgroundColor }) => (
             <Badge
               as="a"
-              href={tag.site}
+              href={site}
               target="_blank"
               rel="noopener noreferrer"
               fontSize={{ base: 'x-small', sm: 'xs' }}
-              key={index}
+              key={_id}
               marginRight="7px"
               variant="solid"
-              backgroundColor={tag.backgroundColor.hex}
+              backgroundColor={backgroundColor.hex}
               color="whiteAlpha.900"
             >
-              {tag.name}
+              {name}
             </Badge>
           ))}
 

@@ -14,7 +14,12 @@ export const getAllProjects = async () => {
         },
         website,
         repo,
-        tags,
+        tags[]->{
+          _id,
+          name,
+          site,
+          backgroundColor
+        },
         members[]->{
           _id,
           name,
