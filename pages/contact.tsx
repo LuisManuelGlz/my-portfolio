@@ -8,7 +8,7 @@ import Section from '../components/section';
 import Title from '../components/title';
 import styles from '../styles/Home.module.scss';
 
-const contact = () => {
+const Contact = () => {
   const { t } = useTranslation();
 
   return (
@@ -27,4 +27,4 @@ const contact = () => {
   );
 };
 
-export default contact;
+export default Contact;

@@ -10,12 +10,14 @@ type Props = {
 const NavLink = ({ href, path, children, ...rest }: Props) => {
   const isActive = path === href;
 
+  const colorScheme = useColorModeValue('dark', 'gray');
+
   return (
     <NextLink href={href} passHref>
       <Button
-        as="button"
+        as="a"
         p={2}
-        colorScheme={isActive ? 'primary' : useColorModeValue('dark', 'gray')}
+        colorScheme={isActive ? 'primary' : colorScheme}
         _hover={{
           bg: useColorModeValue('gray.100', 'dark.400'),
         }}
