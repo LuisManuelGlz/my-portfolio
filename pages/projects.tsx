@@ -50,6 +50,7 @@ const Projects = ({ projects }: Props) => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   return (
+    // @ts-ignore
     <AnimateSharedLayout type="crossfade">
       <Head>
         <title>{t('projects')} | Luis Manuel</title>

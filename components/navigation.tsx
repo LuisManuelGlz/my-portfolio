@@ -1,9 +1,7 @@
-import React, { useRef, MutableRefObject } from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
 import {
   Box,
-  Button,
-  ButtonProps,
   useColorModeValue,
   useDisclosure,
   IconButton,
