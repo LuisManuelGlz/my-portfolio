@@ -22,14 +22,14 @@ const Footer = () => {
             network="linkedin"
             bgColor={useColorModeValue('', '#ffffff')}
           />
-          <SocialIcon
+          {/* <SocialIcon
             style={{ height: 45, width: 45, marginRight: 20 }}
             url="https://twitter.com/LuisManuelGlz_"
             target="_blank"
             rel="noopener noreferrer"
             network="twitter"
             bgColor={useColorModeValue('', '#ffffff')}
-          />
+          /> */}
         </Box>
       </Container>
     </Box>

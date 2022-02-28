@@ -173,6 +173,21 @@ const ContactForm = () => {
           width="full"
           isLoading={isSubmitting}
           type="submit"
+          _hover={{
+            _before: {
+              inset: 0,
+            },
+          }}
+          _before={{
+            content: "''",
+            position: 'absolute',
+            inset: '48px',
+            filter: 'blur(10px)',
+            transform: 'scale(1)',
+            background: 'primaryGradient',
+            transition: 'inset 2s',
+            zIndex: -10,
+          }}
         >
           {t('sendButton')}
         </Button>

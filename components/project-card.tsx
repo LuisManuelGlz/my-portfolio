@@ -72,16 +72,35 @@ const ProjectCard = ({
       custom={index}
       variants={variants}
     >
-      <MotionImage
-        src={image.asset.url}
-        alt={title}
-        objectFit="cover"
-        borderRadius="2xl"
-        layoutId={`card-container-${_id}`}
-        cursor="pointer"
-        onClick={handleClick}
-        whileHover={{ scale: 1.1, y: -5, transition: { delay: 0.6 } }}
-      />
+      <Box
+        position="relative"
+        _hover={{
+          _before: {
+            inset: 0,
+          },
+        }}
+        _before={{
+          content: "''",
+          position: 'absolute',
+          inset: '48px',
+          filter: 'blur(25px)',
+          transform: 'scale(1)',
+          background: 'primaryGradient',
+          transition: 'inset 2s 0.5s',
+          zIndex: -10,
+        }}
+      >
+        <MotionImage
+          src={image.asset.url}
+          alt={title}
+          objectFit="cover"
+          borderRadius="2xl"
+          layoutId={`card-container-${_id}`}
+          cursor="pointer"
+          onClick={handleClick}
+          whileHover={{ scale: 1.1, y: -5, transition: { delay: 0.6 } }}
+        />
+      </Box>
       <Text as="h4" marginTop={2} fontWeight="semibold" textAlign="center">
         {title}
       </Text>

@@ -44,6 +44,7 @@ const colors = {
     800: '#141414',
     900: '#111111',
   },
+  primaryGradient: 'linear-gradient(45deg, #00dfd8, #0099ff, #0099ff, #00dfd8)',
 };
 
 const components = {

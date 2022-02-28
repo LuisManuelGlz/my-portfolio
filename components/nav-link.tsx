@@ -18,6 +18,7 @@ const NavLink = ({ href, path, children, ...rest }: Props) => {
         as="a"
         p={2}
         colorScheme={isActive ? 'primary' : colorScheme}
+        fontWeight={isActive ? 'semibold' : 'medium'}
         _hover={{
           bg: useColorModeValue('gray.100', 'dark.400'),
         }}

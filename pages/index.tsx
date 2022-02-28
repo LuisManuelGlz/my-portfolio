@@ -23,10 +23,7 @@ type Props = {
   skills: ISkill[];
 };
 
-const Home = ({
-  siteSettings: { siteName, shortName, role, about },
-  skills,
-}: Props) => {
+const Home = ({ siteSettings: { shortName, role, about }, skills }: Props) => {
   const { locale } = useContext(LanguageContext);
   const { t } = useTranslation();
 
