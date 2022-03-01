@@ -56,8 +56,7 @@ export const getSkills = async () => {
 export const getSiteSettings = async () => {
   const data = await client.fetch(
     `*[_type == 'siteSettings'][0]{
-      siteName,
-      shortName,
+      greeting,
       role,
       about{
         "en": en[0],

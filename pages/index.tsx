@@ -23,7 +23,7 @@ type Props = {
   skills: ISkill[];
 };
 
-const Home = ({ siteSettings: { shortName, role, about }, skills }: Props) => {
+const Home = ({ siteSettings: { greeting, role, about }, skills }: Props) => {
   const { locale } = useContext(LanguageContext);
   const { t } = useTranslation();
 
@@ -55,13 +55,13 @@ const Home = ({ siteSettings: { shortName, role, about }, skills }: Props) => {
             marginBottom="24px"
             fontSize={{ base: '50px', sm: '70px', md: '90px' }}
           >
-            {t('greeting')} {shortName}.
+            {greeting[locale]}
           </Heading>
           <Text
             color={useColorModeValue('dark', 'gray.100')}
             fontSize={{ base: 'lg', sm: '2xl', md: '3xl' }}
           >
-            {t('imA')} {role[locale]}
+            {role[locale]}
           </Text>
         </Box>
       </Section>

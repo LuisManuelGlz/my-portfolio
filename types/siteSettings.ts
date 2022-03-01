@@ -3,8 +3,7 @@ import LocaleStringType from './localeString';
 
 type SiteSettingsType = {
   _id: string;
-  siteName: string;
-  shortName: string;
+  greeting: LocaleStringType;
   role: LocaleStringType;
   about: LocaleBlockType;
   whatIDo: LocaleBlockType;

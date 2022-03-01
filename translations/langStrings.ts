@@ -3,9 +3,6 @@ import LocaleBlockType from '../types/localeBlock';
 export const langStrings: LocaleBlockType = {
   en: {
     home: 'Home',
-    developer: 'Developer',
-    greeting: "Hello, I'm",
-    imA: "I'm a",
     my: 'My',
     projects: 'Projects',
     about: 'About',
@@ -27,9 +24,6 @@ export const langStrings: LocaleBlockType = {
   },
   es: {
     home: 'Inicio',
-    developer: 'Desarrollador',
-    greeting: 'Hola, soy',
-    imA: 'Soy un',
     my: 'Mis',
     projects: 'Proyectos',
     createdBy: 'Creato por',
