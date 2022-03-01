@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Router } from 'next/router';
 import Head from 'next/head';
-import { Box, Container } from '@chakra-ui/react';
+import { Box, Container, useColorModeValue } from '@chakra-ui/react';
 import { ToastContainer } from 'react-toastify';
 import useTranslation from '../hooks/useTranslation';
 import Navigation from '../components/navigation';
@@ -18,7 +18,10 @@ const main = ({ children, router }: Props) => {
   const { t } = useTranslation();
 
   return (
-    <Box as="main">
+    <Box
+      as="main"
+      boxShadow={useColorModeValue('none', 'inset 0 0 150px black')}
+    >
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Luis Manuel's portfolio" />
