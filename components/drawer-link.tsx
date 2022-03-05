@@ -11,7 +11,7 @@ const NavLink = ({ href, path, children, ...rest }: Props) => {
   const isActive = path === href;
 
   return (
-    <NextLink href={href} passHref>
+    <NextLink href={href} passHref scroll={false}>
       <Button
         as="a"
         p={2}

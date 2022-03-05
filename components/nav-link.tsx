@@ -1,35 +1,29 @@
 import React from 'react';
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
-import { ButtonProps, Button, useColorModeValue } from '@chakra-ui/react';
+import { LinkProps, Link, useColorModeValue } from '@chakra-ui/react';
 
 type Props = {
   path: string;
 } & NextLinkProps &
-  ButtonProps;
+  LinkProps;
 
 const NavLink = ({ href, path, children, ...rest }: Props) => {
   const isActive = path === href;
 
-  const colorScheme = useColorModeValue('dark', 'gray');
+  const color = useColorModeValue('dark.500', 'whiteAlpha.900');
 
   return (
-    <NextLink href={href} passHref>
-      <Button
-        as="a"
+    <NextLink href={href} passHref scroll={false}>
+      <Link
         p={2}
-        colorScheme={isActive ? 'primary' : colorScheme}
-        fontWeight={isActive ? 'semibold' : 'medium'}
-        _hover={{
-          bg: useColorModeValue('gray.100', 'dark.400'),
-        }}
-        _focusWithin={{
-          bg: useColorModeValue('gray.100', 'dark.400'),
-        }}
+        color={isActive ? color : 'gray.500'}
+        _hover={{ color }}
+        _focusWithin={{ color }}
         variant="ghost"
         {...rest}
       >
         {children}
-      </Button>
+      </Link>
     </NextLink>
   );
 };

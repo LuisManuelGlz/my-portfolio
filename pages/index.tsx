@@ -46,7 +46,7 @@ const Home = ({ siteSettings: { greeting, role, about }, skills }: Props) => {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          height="90vh"
+          height="100vh"
         >
           <Heading
             as="h1"
