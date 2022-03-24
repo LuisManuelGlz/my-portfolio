@@ -118,7 +118,7 @@ const ContactForm = () => {
             autoComplete="off"
             maxLength={255}
             backgroundColor={useColorModeValue('gray.200', 'dark.600')}
-            placeholder={t('namePlaceholder')}
+            placeholder={t('emailPlaceholder')}
             _placeholder={{
               color: useColorModeValue('dark.800', 'gray.300'),
             }}
@@ -139,7 +139,7 @@ const ContactForm = () => {
             rows={10}
             resize="none"
             backgroundColor={useColorModeValue('gray.200', 'dark.600')}
-            placeholder={t('namePlaceholder')}
+            placeholder={t('messagePlaceholder')}
             _placeholder={{
               color: useColorModeValue('dark.800', 'gray.300'),
             }}
