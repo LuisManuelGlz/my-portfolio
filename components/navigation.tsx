@@ -37,13 +37,8 @@ const Navigation = ({ path }: Props) => {
   const backgroundBase = useColorModeValue('white', 'black');
 
   useEffect(() => {
-    const handleScrollChange = () => {
-      if (window.scrollY > 100) {
-        setIsBackgroundTransparent(false);
-      } else {
-        setIsBackgroundTransparent(true);
-      }
-    };
+    const handleScrollChange = () =>
+      setIsBackgroundTransparent(window.scrollY < 100);
 
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', handleScrollChange);
