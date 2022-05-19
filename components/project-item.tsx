@@ -49,9 +49,8 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
     </Text>
   );
 
-  const { title, image, tags, description, website, repo } = projects.find(
-    (project) => project._id === id
-  )!;
+  const { title, compressedImage, tags, description, website, repo } =
+    projects.find((project) => project._id === id)!;
 
   return (
     <Box
@@ -89,7 +88,11 @@ const ProjectItem = ({ id, handleClick, projects }: Props) => {
       >
         {/* Banner container */}
         <MotionBox position="relative" width="100%">
-          <Image objectFit="cover" src={image.asset.url} alt={title} />
+          <Image
+            objectFit="cover"
+            src={compressedImage.asset.url}
+            alt={title}
+          />
           <Box
             position="absolute"
             inset={0}

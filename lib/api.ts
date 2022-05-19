@@ -30,6 +30,12 @@ export const getAllProjects = async () => {
             _id,
             url,
           }
+        },
+        compressedImage{
+          asset->{
+            _id,
+            url,
+          }
         }
     }`
   );

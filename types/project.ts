@@ -10,6 +10,7 @@ type ProjectType = {
   members: Member[];
   tags: Tag[];
   image: ImageType;
+  compressedImage: ImageType;
   website: string;
   repo: string;
 };
