@@ -66,7 +66,7 @@ const ContactForm = () => {
         .catch(() => {
           toast.error(t('emailNotSent'));
         })
-        .finally(() => setIsSubmitting(true));
+        .finally(() => setIsSubmitting(false));
     } else {
       setIsReCaptchaVerified(false);
     }
